@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nadasia Dedto | Housing Impact</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#191c1d",
+                        "outline-variant": "#bec9c5",
+                        "surface-container-highest": "#e1e3e4",
+                        "secondary": "#466270",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#3f4946",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#874636",
+                        "primary-fixed": "#a4f1e0",
+                        "surface-container-high": "#e7e8e9",
+                        "surface-tint": "#126a5d",
+                        "surface-container": "#edeeef",
+                        "inverse-on-surface": "#f0f1f2",
+                        "on-primary-container": "#d5fff4",
+                        "tertiary-fixed-dim": "#ffb4a2",
+                        "inverse-surface": "#2e3132",
+                        "surface-container-low": "#f3f4f5",
+                        "secondary-fixed-dim": "#adcbda",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#d9dadb",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#f8f9fa",
+                        "surface-bright": "#f8f9fa",
+                        "error-container": "#ffdad6",
+                        "primary": "#036457",
+                        "on-secondary-fixed-variant": "#2e4b57",
+                        "on-secondary-container": "#4a6774",
+                        "surface": "#f8f9fa",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#e1e3e4",
+                        "on-tertiary": "#ffffff",
+                        "outline": "#6f7976",
+                        "primary-container": "#2d7d6f",
+                        "tertiary-fixed": "#ffdad2",
+                        "tertiary-container": "#a45e4c",
+                        "secondary-fixed": "#c9e7f7",
+                        "primary-fixed-dim": "#88d5c4",
+                        "secondary-container": "#c6e4f4",
+                        "on-tertiary-fixed-variant": "#713526",
+                        "on-tertiary-fixed": "#390b02",
+                        "on-tertiary-container": "#fff4f2",
+                        "on-secondary-fixed": "#001f2a",
+                        "on-primary-fixed": "#00201b",
+                        "on-primary-fixed-variant": "#005045",
+                        "on-surface": "#191c1d",
+                        "inverse-primary": "#88d5c4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .nav-item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown { transition: all 0.2s ease-out; transform: translateY(8px); opacity: 0; visibility: hidden; }
+        .page-container {
+            width: 100%;
+            height: auto;
+            min-height: 100vh;
+            position: relative;
+            background: #f8f9fa;
+        }
+        .metric-card:hover .metric-breakdown { opacity: 1; transform: translateY(0); pointer-events: auto; }
+        .metric-breakdown { 
+            opacity: 0; 
+            transform: translateY(10px); 
+            pointer-events: none; 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            z-index: 50; 
+            width: 100%;
+        }
+        .metric-card { z-index: 10; }
+        .metric-card:hover { z-index: 20; }
+
+        /* Scroll-triggered animations */
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        .fade-in-left.visible,
+        .fade-in-right.visible,
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translate(0);
+        }
+        /* Stagger children */
+        .fade-in-up.delay-1 { transition-delay: 0.15s; }
+        .fade-in-up.delay-2 { transition-delay: 0.3s; }
+
+        /* Subtle hover zoom on image */
+        .img-hover-zoom img {
+            transition: transform 0.6s ease-out;
+        }
+        .img-hover-zoom:hover img {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="text-on-background font-body selection:bg-primary-fixed selection:text-on-primary-fixed min-h-screen bg-background">
+<div class="page-container bg-background">
+<!-- Primary Top Bar (Identical to SCREEN_2 style) -->
+<header class="bg-white/80 backdrop-blur-xl z-[60] relative border-b border-outline-variant/10">
+<div class="flex justify-between items-center w-full max-w-[1440px] mx-auto px-12 h-20">
+<a href="home.html" class="text-xl font-bold text-primary uppercase tracking-widest font-headline no-underline">Nadácia Dedo</a>
+<nav class="hidden lg:flex items-center gap-8 ml-auto">
+<div class="relative group nav-item">
+<a class="text-sm font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors py-8 inline-flex items-center gap-1" href="#" style="">
+                            What we do
+                            <span class="material-symbols-outlined text-sm" style="">expand_more</span>
+</a>
+<div class="dropdown absolute top-full left-0 w-48 bg-white shadow-xl border border-outline-variant/20 rounded-xl overflow-hidden py-2 z-[60]">
+<a class="block px-4 py-3 text-sm text-on-surface-variant hover:bg-primary-container/10 hover:text-primary transition-colors" href="#" style="">Our impact</a>
+<a class="block px-4 py-3 text-sm text-on-surface-variant hover:bg-primary-container/10 hover:text-primary transition-colors" href="#" style="">Projects</a>
+<a class="block px-4 py-3 text-sm text-on-surface-variant hover:bg-primary-container/10 hover:text-primary transition-colors" href="#" style="">News</a>
+</div>
+</div>
+<div class="relative group nav-item">
+<a class="text-sm font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors py-8 inline-flex items-center gap-1" href="#" style="">
+                            About
+                            <span class="material-symbols-outlined text-sm" style="">expand_more</span>
+</a>
+<div class="dropdown absolute top-full left-0 w-56 bg-white shadow-xl border border-outline-variant/20 rounded-xl overflow-hidden py-2 z-[60]">
+<a class="block px-4 py-3 text-sm text-on-surface-variant hover:bg-primary-container/10 hover:text-primary transition-colors" href="#" style="">About the foundation</a>
+<a class="block px-4 py-3 text-sm text-on-surface-variant hover:bg-primary-container/10 hover:text-primary transition-colors" href="#" style="">Management team</a>
+<a class="block px-4 py-3 text-sm text-on-surface-variant hover:bg-primary-container/10 hover:text-primary transition-colors" href="#" style="">Contact</a>
+</div>
+</div>
+<div class="relative group nav-item">
+<a class="text-sm font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors py-8 inline-flex items-center gap-1" href="#" style="">
+                            Impact enablers
+                            <span class="material-symbols-outlined text-sm" style="">expand_more</span>
+</a>
+<div class="dropdown absolute top-full left-0 w-48 bg-white shadow-xl border border-outline-variant/20 rounded-xl overflow-hidden py-2 z-[60]">
+<a class="block px-4 py-3 text-sm text-on-surface-variant hover:bg-primary-container/10 hover:text-primary transition-colors" href="#" style="">Partners</a>
+<a class="block px-4 py-3 text-sm text-on-surface-variant hover:bg-primary-container/10 hover:text-primary transition-colors" href="#" style="">2%</a>
+</div>
+</div>
+<div class="relative group nav-item">
+<a class="text-sm font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors py-8 inline-flex items-center gap-1" href="#" style="">
+                            Contribute
+                            <span class="material-symbols-outlined text-sm" style="">expand_more</span>
+</a>
+<div class="dropdown absolute top-full left-0 w-48 bg-white shadow-xl border border-outline-variant/20 rounded-xl overflow-hidden py-2 z-[60]">
+<a class="block px-4 py-3 text-sm text-on-surface-variant hover:bg-primary-container/10 hover:text-primary transition-colors" href="#" style="">Contribute</a>
+</div>
+</div>
+</nav>
+</div>
+</header>
+<!-- Secondary Floating Navigation (Identical to SCREEN_2 style) -->
+<nav class="mt-8 flex justify-center sticky top-0 z-50 py-3 bg-background/80 backdrop-blur-md">
+<div class="bg-white shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-outline-variant/20 rounded-full px-8 py-2.5 flex items-center gap-2 font-headline text-[11px] font-bold uppercase tracking-wider">
+<a class="bg-[#036457] text-white px-5 py-2 flex items-center gap-3 rounded-full transition-all group" href="housing.html" style="">
+<span class="material-symbols-outlined text-lg" style='font-variation-settings: "FILL" 1;'>home</span>
+                    Housing
+                </a>
+<div class="w-px h-5 bg-outline-variant/30 mx-1"></div>
+<a class="text-on-surface-variant px-5 py-2 flex items-center gap-3 hover:bg-teal-50/50 rounded-full transition-all group" href="social-services.html" style="">
+<span class="material-symbols-outlined text-lg group-hover:scale-110 transition-transform" style="">diversity_3</span>
+                    Social Services
+                </a>
+<div class="w-px h-5 bg-outline-variant/30 mx-1"></div>
+<a class="text-on-surface-variant px-5 py-2 flex items-center gap-3 hover:bg-teal-50/50 rounded-full transition-all group" href="employment.html" style="">
+<span class="material-symbols-outlined text-lg group-hover:scale-110 transition-transform" style="">work</span>
+                    Employment
+                </a>
+<div class="w-px h-5 bg-outline-variant/30 mx-1"></div>
+<a class="text-on-surface-variant px-5 py-2 flex items-center gap-3 hover:bg-teal-50/50 rounded-full transition-all group" href="health.html" style="">
+<span class="material-symbols-outlined text-lg group-hover:scale-110 transition-transform" style="">medical_services</span>
+                    Health
+                </a>
+<div class="w-px h-5 bg-outline-variant/30 mx-1"></div>
+<a class="text-on-surface-variant px-5 py-2 flex items-center gap-3 hover:bg-teal-50/50 rounded-full transition-all group" href="advocacy.html" style="">
+<span class="material-symbols-outlined text-lg group-hover:scale-110 transition-transform" style="">campaign</span>
+                    Advocacy
+                </a>
+</div>
+</nav>
+<main class="pt-8 max-w-[1440px] mx-auto px-12">
+<!-- Living Ledger Hero Metrics -->
+<section class="w-full pb-16">
+<div class="bg-primary/5 rounded-[2.5rem] p-12 border border-primary/10 relative">
+<div class="absolute top-0 right-0 p-8 opacity-10">
+<span class="material-symbols-outlined text-[12rem]" style="">query_stats</span>
+</div>
+<div class="grid grid-cols-12 gap-8 items-end relative z-10">
+<!-- Number of Apartments -->
+<div class="col-span-4 relative metric-card group/card">
+<div class="flex flex-col gap-1 mb-8">
+<span class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary" style="">Living Ledger: Metrics</span>
+<h3 class="text-xs font-bold uppercase tracking-widest text-on-surface-variant" style="">Number of Apartments</h3>
+</div>
+<div class="flex items-center gap-6">
+<div class="w-20 h-20 bg-white rounded-2xl shadow-sm border border-primary/5 flex items-center justify-center transition-transform group-hover/card:scale-105">
+<span class="material-symbols-outlined text-4xl text-primary" style='font-variation-settings: "FILL" 1;'>home</span>
+</div>
+<div>
+<div class="text-6xl font-headline font-black text-primary leading-none" style="">40</div>
+<div class="text-[10px] font-bold uppercase tracking-widest text-outline mt-1" style="">Current total</div>
+</div>
+</div>
+<!-- Breakdown on Hover -->
+<div class="metric-breakdown absolute top-[calc(100%+1.5rem)] left-0 right-0 flex gap-4"><div class="flex-1 bg-[#d3e9e5] p-5 rounded-xl shadow-lg border border-primary/10 flex flex-col items-center text-center">
+<div class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/70 mb-3">Kosice</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-3xl text-primary/60" style='font-variation-settings: "FILL" 1;'>home</span>
+<div class="text-3xl font-headline font-black text-primary leading-none">36</div>
+</div>
+<div class="text-[10px] font-bold uppercase tracking-widest text-primary/60 mt-2">Current</div>
+</div>
+<div class="flex-1 bg-[#d3e9e5] p-5 rounded-xl shadow-lg border border-primary/10 flex flex-col items-center text-center">
+<div class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/70 mb-3">Presov</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-3xl text-primary/60" style='font-variation-settings: "FILL" 1;'>home</span>
+<div class="text-3xl font-headline font-black text-primary leading-none">4</div>
+</div>
+<div class="text-[10px] font-bold uppercase tracking-widest text-primary/60 mt-2">Current</div>
+</div></div>
+</div>
+<!-- Number of Clients -->
+<div class="col-span-4 relative metric-card group/card">
+<div class="flex flex-col gap-1 mb-8">
+<span class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary invisible" style="">Living Ledger</span>
+<h3 class="text-xs font-bold uppercase tracking-widest text-on-surface-variant" style="">Number of Clients</h3>
+</div>
+<div class="flex items-center gap-6">
+<div class="w-20 h-20 bg-white rounded-2xl shadow-sm border border-primary/5 flex items-center justify-center transition-transform group-hover/card:scale-105">
+<span class="material-symbols-outlined text-4xl text-primary" style="">diversity_1</span>
+</div>
+<div>
+<div class="text-6xl font-headline font-black text-primary leading-none" style="">135</div>
+<div class="text-[10px] font-bold uppercase tracking-widest text-outline mt-1" style="">Direct impact</div>
+</div>
+</div>
+<!-- Breakdown on Hover (Using sample logic from image_20) -->
+<div class="metric-breakdown absolute top-[calc(100%+1.5rem)] left-0 right-0 flex gap-4"><div class="flex-1 bg-[#d3e9e5] p-5 rounded-xl shadow-lg border border-primary/10 flex flex-col items-center text-center">
+<div class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/70 mb-3">Kosice</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-3xl text-primary/60">family_restroom</span>
+<div class="text-3xl font-headline font-black text-primary leading-none">120</div>
+</div>
+<div class="text-[10px] font-bold uppercase tracking-widest text-primary/60 mt-2">Current</div>
+</div>
+<div class="flex-1 bg-[#d3e9e5] p-5 rounded-xl shadow-lg border border-primary/10 flex flex-col items-center text-center">
+<div class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/70 mb-3">Presov</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-3xl text-primary/60">family_restroom</span>
+<div class="text-3xl font-headline font-black text-primary leading-none">15</div>
+</div>
+<div class="text-[10px] font-bold uppercase tracking-widest text-primary/60 mt-2">Current</div>
+</div></div>
+</div>
+<!-- Nights at Home -->
+<div class="col-span-4 relative metric-card group/card">
+<div class="flex flex-col gap-1 mb-8">
+<span class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary invisible">Living Ledger</span>
+<h3 class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Nights at Home</h3>
+</div>
+<div class="flex items-center gap-6">
+<div class="w-20 h-20 bg-white rounded-2xl shadow-sm border border-primary/5 flex items-center justify-center transition-transform group-hover/card:scale-105">
+<span class="material-symbols-outlined text-4xl text-primary">bedtime</span>
+</div>
+<div>
+<div class="text-6xl font-headline font-black text-primary leading-none">193,038</div>
+<div class="text-[10px] font-bold uppercase tracking-widest text-outline mt-1">Since 2020</div>
+</div>
+</div>
+<!-- Breakdown on Hover -->
+<div class="metric-breakdown absolute top-[calc(100%+1.5rem)] left-0 right-0 flex gap-4"><div class="flex-1 bg-[#d3e9e5] p-5 rounded-xl shadow-lg border border-primary/10 flex flex-col items-center text-center">
+<div class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/70 mb-3">Kosice</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-3xl text-primary/60">bedtime</span>
+<div class="text-2xl font-headline font-black text-primary leading-none">180,000</div>
+</div>
+<div class="text-[10px] font-bold uppercase tracking-widest text-primary/60 mt-2">Since 2020</div>
+</div>
+<div class="flex-1 bg-[#d3e9e5] p-5 rounded-xl shadow-lg border border-primary/10 flex flex-col items-center text-center">
+<div class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/70 mb-3">Presov</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-3xl text-primary/60">bedtime</span>
+<div class="text-2xl font-headline font-black text-primary leading-none">13,038</div>
+</div>
+<div class="text-[10px] font-bold uppercase tracking-widest text-primary/60 mt-2">Since 2020</div>
+</div></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Housing First Introduction -->
+<section class="w-full py-24 grid grid-cols-12 gap-8 items-center border-t border-outline-variant/10">
+<div class="col-span-12 md:col-span-7">
+<h1 class="fade-in-left font-headline text-[5rem] font-extrabold leading-[0.9] tracking-tighter text-primary mb-8" style="">
+                        Housing First
+                    </h1>
+<p class="fade-in-up delay-1 font-body text-xl text-on-surface-variant max-w-xl leading-relaxed" style="">
+                        The Housing First principle views housing as a fundamental right rather than a reward for sobriety or mental health stability. It provides immediate, permanent housing without preconditions, followed by intensive supportive services.
+                    </p>
+</div>
+<div class="col-span-12 md:col-span-5 relative fade-in-right">
+<div class="aspect-square bg-surface-container rounded-xl overflow-hidden relative group img-hover-zoom">
+<img alt="Housing First" class="absolute inset-0 w-full h-full object-cover" src="./assets/images/housing-1.png"/>
+<div class="absolute bottom-8 left-8 right-8 p-6 bg-white/80 backdrop-blur-md rounded-lg shadow-sm">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style='font-variation-settings: "FILL" 1;'>verified_user</span>
+</div>
+<div>
+<div class="text-xs font-bold uppercase tracking-widest text-primary" style="">Priority Metric</div>
+<div class="text-lg font-headline font-bold" style="">94% Retention Rate</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Scrollytelling Grid -->
+<section class="bg-surface-container-low py-32">
+<div class="w-full">
+<div class="mb-16 text-center">
+<h2 class="font-headline text-3xl font-bold mb-4" style="">The Housing Gap</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto" style="">Visualizing the scale of the crisis. Each dot represents a family seeking a place to call home.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+<div class="sticky top-40 space-y-12">
+<div class="p-8 bg-surface-container-lowest rounded-xl shadow-sm">
+<h3 class="text-5xl font-headline font-black text-primary mb-2" style="">135</h3>
+<div class="text-sm font-bold uppercase tracking-widest text-outline" style="">Families Housed</div>
+<p class="mt-4 text-on-surface-variant leading-relaxed" style="">Families who have successfully transitioned from the streets or shelters into permanent, managed housing through our programs.</p>
+</div>
+<div class="p-8 bg-surface-container-lowest/50 rounded-xl">
+<h3 class="text-5xl font-headline font-black text-tertiary mb-2" style="">2,000+</h3>
+<div class="text-sm font-bold uppercase tracking-widest text-outline" style="">Families in Need</div>
+<p class="mt-4 text-on-surface-variant leading-relaxed" style="">The estimated number of families currently waitlisted or in precarious housing situations across the region.</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-1 rounded-xl shadow-inner min-h-[600px] relative overflow-hidden">
+<div class="flex flex-wrap gap-[2px] p-4">
+<div class="flex flex-wrap gap-[2px]">
+<div class="w-2 h-2 bg-primary rounded-full"></div><div class="w-2 h-2 bg-primary rounded-full"></div><div class="w-2 h-2 bg-primary rounded-full"></div><div class="w-2 h-2 bg-primary rounded-full"></div><div class="w-2 h-2 bg-primary rounded-full"></div>
+<div class="w-2 h-2 bg-primary rounded-full"></div><div class="w-2 h-2 bg-primary rounded-full"></div><div class="w-2 h-2 bg-primary rounded-full"></div><div class="w-2 h-2 bg-primary rounded-full"></div><div class="w-2 h-2 bg-primary rounded-full"></div>
+<div class="w-2 h-2 bg-primary rounded-full"></div><div class="w-2 h-2 bg-primary rounded-full"></div><div class="w-2 h-2 bg-primary rounded-full"></div><div class="w-2 h-2 bg-primary rounded-full"></div><div class="w-2 h-2 bg-primary rounded-full"></div>
+<div class="w-2 h-2 bg-primary/40 rounded-full animate-pulse"></div>
+<div class="w-2 h-2 bg-primary/40 rounded-full animate-pulse"></div>
+</div>
+<div class="flex flex-wrap gap-[2px] opacity-20">
+<div class="w-2 h-2 bg-outline rounded-full"></div><div class="w-2 h-2 bg-outline rounded-full"></div><div class="w-2 h-2 bg-outline rounded-full"></div><div class="w-2 h-2 bg-outline rounded-full"></div><div class="w-2 h-2 bg-outline rounded-full"></div>
+<div class="w-2 h-2 bg-outline rounded-full"></div><div class="w-2 h-2 bg-outline rounded-full"></div><div class="w-2 h-2 bg-outline rounded-full"></div><div class="w-2 h-2 bg-outline rounded-full"></div><div class="w-2 h-2 bg-outline rounded-full"></div>
+</div>
+</div>
+<img alt="Housing Impact Chart" class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[85%] h-auto" src="./assets/images/housing-2.png"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Collaborative Engine Section -->
+<section class="w-full py-32">
+<div class="mb-20">
+<h2 class="font-headline text-4xl font-bold mb-4" style="">The Collaborative Engine</h2>
+<p class="text-on-surface-variant text-lg" style="">Housing is only the first step. Our multidisciplinary team ensures it's the last move they'll ever have to make.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="p-8 bg-surface-container rounded-xl transition-all hover:bg-surface-bright group">
+<div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl" style="">groups</span>
+</div>
+<h3 class="font-headline font-bold text-xl mb-3" style="">Social Worker</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed" style="">Navigates complex administrative systems and provides daily logistical support for community reintegration.</p>
+</div>
+<div class="p-8 bg-surface-container rounded-xl transition-all hover:bg-surface-bright group">
+<div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl" style="">medical_services</span>
+</div>
+<h3 class="font-headline font-bold text-xl mb-3" style="">Health Worker</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed" style="">Coordinates medical appointments, medication management, and preventative health education.</p>
+</div>
+<div class="p-8 bg-surface-container rounded-xl transition-all hover:bg-surface-bright group">
+<div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl" style="">psychology</span>
+</div>
+<h3 class="font-headline font-bold text-xl mb-3" style="">Psychologist</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed" style="">Provides trauma-informed therapy and emotional resilience coaching to rebuild sense of self.</p>
+</div>
+<div class="p-8 bg-surface-container rounded-xl transition-all hover:bg-surface-bright group">
+<div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl" style="">gavel</span>
+</div>
+<h3 class="font-headline font-bold text-xl mb-3" style="">Lawyer</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed" style="">Manages legal status, debt resolution, and protects the rights of tenants in our housing network.</p>
+</div>
+</div>
+<div class="mt-16 flex items-center gap-12 p-12 bg-primary/5 rounded-2xl border border-primary/10">
+<div class="flex-shrink-0">
+<span class="material-symbols-outlined text-primary text-5xl" style='font-variation-settings: "FILL" 1;'>handshake</span>
+</div>
+<div>
+<h4 class="font-headline text-2xl font-bold mb-2 text-primary" style="">Commitment to be a good neighbor</h4>
+<p class="text-on-surface-variant leading-relaxed" style="">We don't just place families; we integrate them. We work with neighborhoods to ensure a harmonious environment for everyone, mediating concerns and fostering mutual respect.</p>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="w-full py-32">
+<div class="bg-primary-container text-on-primary-container rounded-3xl overflow-hidden grid grid-cols-1 md:grid-cols-2">
+<div class="p-16 flex flex-col justify-center">
+<h2 class="font-headline text-5xl font-black mb-8 leading-tight" style="">The family belongs to the home. Rent it to us.</h2>
+<p class="text-lg opacity-90 mb-10 leading-relaxed" style="">
+                            Do you have a vacant apartment? By renting to Nadasia Dedto, you get guaranteed rent, professional property management, and the profound satisfaction of ending a family's homelessness.
+                        </p>
+<div class="flex gap-4">
+<button class="bg-on-primary-container text-primary-container px-8 py-4 rounded-xl font-headline font-bold hover:bg-white transition-colors" style="">Become a Partner</button>
+<button class="border border-white/30 text-white px-8 py-4 rounded-xl font-headline font-bold hover:bg-white/10 transition-colors" style="">Learn about Guarantees</button>
+</div>
+</div>
+<div class="relative min-h-[400px] bg-primary/20 flex items-center justify-center">
+<div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 32px 32px;"></div>
+<div class="relative z-10 p-12 text-center">
+<div class="w-48 h-64 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 transform -rotate-6 translate-x-12 translate-y-8">
+<span class="material-symbols-outlined text-6xl text-white opacity-40" style="">key</span>
+</div>
+<div class="w-48 h-64 bg-white/20 backdrop-blur-xl border border-white/20 rounded-2xl p-8 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 shadow-2xl flex flex-col items-center justify-center gap-4">
+<span class="material-symbols-outlined text-6xl text-white" style="">apartment</span>
+<div class="text-sm font-bold tracking-widest uppercase" style="">Safe Space</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer (Identical to SCREEN_2 style) -->
+<footer class="bg-teal-950 dark:bg-black w-full py-12 px-12">
+<div class="flex flex-col md:flex-row justify-between items-center max-w-[1440px] mx-auto border-t border-white/5 pt-12">
+<div class="mb-8 md:mb-0">
+<div class="font-headline font-black text-white text-2xl mb-2" style="">Nadácia Dedo</div>
+<p class="text-slate-400 text-xs tracking-normal" style="">© 2024 Nadácia Dedo. The Living Ledger of Social Impact.</p>
+</div>
+<div class="flex gap-8 font-label text-xs tracking-normal text-slate-400">
+<a class="hover:text-teal-300 transition-all" href="#" style="">Privacy Policy</a>
+<a class="hover:text-teal-300 transition-all" href="#" style="">Data Ethics</a>
+<a class="hover:text-teal-300 transition-all" href="#" style="">Annual Report</a>
+<a class="hover:text-teal-300 transition-all" href="#" style="">Contact</a>
+</div>
+</div>
+</footer>
+</div>
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.fade-in-left, .fade-in-right, .fade-in-up').forEach(el => {
+        observer.observe(el);
+    });
+</script>
+</body></html>

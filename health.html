@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Health Impact | Nadácia Dedo</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-container": "#2d7d6f",
+                    "secondary": "#466270",
+                    "secondary-fixed-dim": "#adcbda",
+                    "inverse-primary": "#88d5c4",
+                    "surface-dim": "#d9dadb",
+                    "on-tertiary": "#ffffff",
+                    "inverse-on-surface": "#f0f1f2",
+                    "surface-variant": "#e1e3e4",
+                    "on-primary-fixed": "#00201b",
+                    "background": "#f8f9fa",
+                    "primary": "#036457",
+                    "error-container": "#ffdad6",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-primary": "#ffffff",
+                    "surface-container-high": "#e7e8e9",
+                    "on-primary-container": "#d5fff4",
+                    "surface": "#f8f9fa",
+                    "tertiary-fixed": "#ffdad2",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-container": "#fff4f2",
+                    "on-surface-variant": "#3f4946",
+                    "on-surface": "#191c1d",
+                    "on-error": "#ffffff",
+                    "surface-container": "#edeeef",
+                    "error": "#ba1a1a",
+                    "on-background": "#191c1d",
+                    "on-tertiary-fixed": "#390b02",
+                    "surface-tint": "#126a5d",
+                    "on-tertiary-fixed-variant": "#713526",
+                    "tertiary": "#874636",
+                    "outline-variant": "#bec9c5",
+                    "inverse-surface": "#2e3132",
+                    "on-primary-fixed-variant": "#005045",
+                    "tertiary-fixed-dim": "#ffb4a2",
+                    "outline": "#6f7976",
+                    "on-secondary-fixed": "#001f2a",
+                    "on-secondary-container": "#4a6774",
+                    "secondary-container": "#c6e4f4",
+                    "surface-container-low": "#f3f4f5",
+                    "primary-fixed-dim": "#88d5c4",
+                    "on-secondary-fixed-variant": "#2e4b57",
+                    "surface-bright": "#f8f9fa",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed": "#c9e7f7",
+                    "primary-fixed": "#a4f1e0",
+                    "tertiary-fixed": "#ffdad2",
+                    "custom-accent": "#C0EBF2"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .nav-item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown { transition: all 0.2s ease-out; transform: translateY(8px); opacity: 0; visibility: hidden; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        .data-card-hover .hover-content {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .data-card-hover:hover .hover-content {
+            opacity: 1;
+        }
+        .data-card-hover:hover .base-content {
+            opacity: 0.1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-fixed-dim selection:text-on-primary-fixed">
+<!-- TopAppBar Updated -->
+<header class="bg-white/80 backdrop-blur-xl z-[60] relative border-b border-outline-variant/10">
+<div class="flex justify-between items-center w-full max-w-[1440px] mx-auto px-12 h-20">
+<a href="home.html" class="text-xl font-bold text-primary uppercase tracking-widest font-headline no-underline">Nadácia Dedo</a>
+<nav class="hidden lg:flex items-center gap-8 ml-auto">
+<div class="relative group nav-item">
+<a class="text-sm font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors py-8 inline-flex items-center gap-1" href="#">
+                            What we do
+                            <span class="material-symbols-outlined text-sm">expand_more</span>
+</a>
+<div class="dropdown absolute top-full left-0 w-48 bg-white shadow-xl border border-outline-variant/20 rounded-xl overflow-hidden py-2 z-[60]">
+<a class="block px-4 py-3 text-sm text-on-surface-variant hover:bg-primary-container/10 hover:text-primary transition-colors" href="#">Our impact</a>
+<a class="block px-4 py-3 text-sm text-on-surface-variant hover:bg-primary-container/10 hover:text-primary transition-colors" href="#">Projects</a>
+<a class="block px-4 py-3 text-sm text-on-surface-variant hover:bg-primary-container/10 hover:text-primary transition-colors" href="#">News</a>
+</div>
+</div>
+<div class="relative group nav-item">
+<a class="text-sm font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors py-8 inline-flex items-center gap-1" href="#">
+                            About
+                            <span class="material-symbols-outlined text-sm">expand_more</span>
+</a>
+<div class="dropdown absolute top-full left-0 w-56 bg-white shadow-xl border border-outline-variant/20 rounded-xl overflow-hidden py-2 z-[60]">
+<a class="block px-4 py-3 text-sm text-on-surface-variant hover:bg-primary-container/10 hover:text-primary transition-colors" href="#">About the foundation</a>
+<a class="block px-4 py-3 text-sm text-on-surface-variant hover:bg-primary-container/10 hover:text-primary transition-colors" href="#">Management team</a>
+<a class="block px-4 py-3 text-sm text-on-surface-variant hover:bg-primary-container/10 hover:text-primary transition-colors" href="#">Contact</a>
+</div>
+</div>
+<div class="relative group nav-item">
+<a class="text-sm font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors py-8 inline-flex items-center gap-1" href="#">
+                            Impact enablers
+                            <span class="material-symbols-outlined text-sm">expand_more</span>
+</a>
+<div class="dropdown absolute top-full left-0 w-48 bg-white shadow-xl border border-outline-variant/20 rounded-xl overflow-hidden py-2 z-[60]">
+<a class="block px-4 py-3 text-sm text-on-surface-variant hover:bg-primary-container/10 hover:text-primary transition-colors" href="#">Partners</a>
+<a class="block px-4 py-3 text-sm text-on-surface-variant hover:bg-primary-container/10 hover:text-primary transition-colors" href="#">2%</a>
+</div>
+</div>
+<div class="relative group nav-item">
+<a class="text-sm font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors py-8 inline-flex items-center gap-1" href="#">
+                            Contribute
+                            <span class="material-symbols-outlined text-sm">expand_more</span>
+</a>
+<div class="dropdown absolute top-full left-0 w-48 bg-white shadow-xl border border-outline-variant/20 rounded-xl overflow-hidden py-2 z-[60]">
+<a class="block px-4 py-3 text-sm text-on-surface-variant hover:bg-primary-container/10 hover:text-primary transition-colors" href="#">Contribute</a>
+</div>
+</div>
+</nav>
+</div>
+</header>
+<!-- Impact Secondary Nav Integrated -->
+<nav class="bg-white border border-outline-variant/20 shadow-sm rounded-full w-fit mx-auto mt-6 sticky top-0 z-50">
+<div class="px-6 py-2 flex items-center gap-2 font-inter text-[10px] font-bold uppercase tracking-widest">
+<a class="text-on-surface-variant px-5 py-2.5 flex items-center gap-3 hover:bg-surface-container-low rounded-full transition-all group" href="housing.html">
+<span class="material-symbols-outlined text-lg opacity-70 group-hover:scale-110 transition-transform">home</span>
+            Housing
+        </a>
+<div class="w-px h-5 bg-outline-variant/30 mx-1"></div>
+<a class="text-on-surface-variant px-5 py-2.5 flex items-center gap-3 hover:bg-surface-container-low rounded-full transition-all group" href="social-services.html">
+<span class="material-symbols-outlined text-lg opacity-70 group-hover:scale-110 transition-transform">diversity_3</span>
+            Social Services
+        </a>
+<div class="w-px h-5 bg-outline-variant/30 mx-1"></div>
+<a class="text-on-surface-variant px-5 py-2.5 flex items-center gap-3 hover:bg-surface-container-low rounded-full transition-all group" href="employment.html">
+<span class="material-symbols-outlined text-lg opacity-70 group-hover:scale-110 transition-transform">work</span>
+            Employment
+        </a>
+<div class="w-px h-5 bg-outline-variant/30 mx-1"></div>
+<a class="bg-primary text-white px-5 py-2.5 flex items-center gap-3 rounded-full transition-all group" href="health.html">
+<span class="material-symbols-outlined text-lg group-hover:scale-110 transition-transform">medical_services</span>
+            Health
+        </a>
+<div class="w-px h-5 bg-outline-variant/30 mx-1"></div>
+<a class="text-on-surface-variant px-5 py-2.5 flex items-center gap-3 hover:bg-surface-container-low rounded-full transition-all group" href="advocacy.html">
+<span class="material-symbols-outlined text-lg opacity-70 group-hover:scale-110 transition-transform">campaign</span>
+            Advocacy
+        </a>
+</div>
+</nav>
+<main class="pt-20 pb-24 max-w-[1440px] mx-auto px-12 min-h-screen">
+<section class="grid grid-cols-12 gap-12 items-start mt-12">
+<!-- Left Editorial Content -->
+<div class="col-span-12 lg:col-span-5 space-y-12">
+<h1 class="text-[3.5rem] font-headline font-extrabold leading-[1.1] tracking-tighter text-primary">
+                Integrated health services
+            </h1>
+<div class="space-y-6 text-on-surface-variant leading-relaxed max-w-xl">
+<p class="font-body text-lg">
+                    In extreme poverty, access to healthcare is often unavailable. That is why we are creating a model of integrated health-social support – we provide treatment and care, accompany clients to specialists, provide psychological assistance and remove practical barriers such as fees or bureaucracy.
+                </p>
+<p class="font-body text-base opacity-80">
+                    A general practitioner for adults, a psychiatrist, a psychologist, and trained medical staff provide healthcare to vulnerable groups of the population as part of a multidisciplinary team, both in outpatient clinics and in the field, wherever homeless people live. We are bringing a unique comprehensive care model in Central Europe to Košice and, from 2026, to Prešov.
+                </p>
+</div>
+</div>
+<!-- Right Data Visualization & Metrics -->
+<div class="col-span-12 lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Metric 1: Treatments -->
+<div class="group relative bg-surface-container-lowest p-10 rounded-xl transition-all duration-500 data-card-hover overflow-hidden h-[380px] flex flex-col justify-between">
+<!-- Base Content -->
+<div class="base-content transition-opacity duration-300">
+<div class="flex items-start justify-between">
+<div class="p-3 bg-custom-accent/30 rounded-lg">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="medical_services">medical_services</span>
+</div>
+<span class="text-xs font-label uppercase tracking-widest text-outline">Current Impact</span>
+</div>
+<div class="mt-12">
+<div class="text-7xl font-headline font-black text-primary flex items-baseline gap-1">
+                            180
+                        </div>
+<p class="mt-4 text-on-surface-variant font-medium text-lg leading-snug">
+                            Total Number of Medical Treatments (Outpatient and Field)
+                        </p>
+</div>
+</div>
+<!-- Hover Data Viz -->
+<div class="hover-content absolute inset-0 p-8 flex flex-col justify-center bg-custom-accent/10">
+<h4 class="text-xs uppercase tracking-widest font-bold text-primary mb-8 border-b border-primary/10 pb-2">Geographic Distribution</h4>
+<div class="space-y-8">
+<div class="space-y-2">
+<div class="flex justify-between items-end">
+<span class="text-sm font-semibold text-primary">Košice</span>
+<span class="text-2xl font-headline font-bold text-primary">112</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 62%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-end">
+<span class="text-sm font-semibold text-primary">Prešov</span>
+<span class="text-2xl font-headline font-bold text-primary">68</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary/40 rounded-full" style="width: 38%"></div>
+</div>
+</div>
+</div>
+<div class="mt-12 pt-6 border-t border-primary/10">
+<p class="text-[10px] uppercase tracking-tighter text-outline-variant font-bold">Updated: Quarterly Audit Q4 2024</p>
+</div>
+</div>
+</div>
+<!-- Metric 2: Clinics -->
+<div class="group relative bg-surface-container-lowest p-10 rounded-xl transition-all duration-500 data-card-hover overflow-hidden h-[380px] flex flex-col justify-between">
+<!-- Base Content -->
+<div class="base-content transition-opacity duration-300">
+<div class="flex items-start justify-between">
+<div class="p-3 bg-custom-accent/30 rounded-lg">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="local_hospital">local_hospital</span>
+</div>
+<span class="text-xs font-label uppercase tracking-widest text-outline">Infrastructure</span>
+</div>
+<div class="mt-12">
+<div class="text-7xl font-headline font-black text-primary flex items-baseline gap-1">
+                            1
+                        </div>
+<p class="mt-4 text-on-surface-variant font-medium text-lg leading-snug">
+                            Number of Clinics and Outpatient Clinics
+                        </p>
+</div>
+</div>
+<!-- Hover Data Viz -->
+<div class="hover-content absolute inset-0 p-8 flex flex-col justify-center bg-custom-accent/10">
+<h4 class="text-xs uppercase tracking-widest font-bold text-primary mb-8 border-b border-primary/10 pb-2">Facility Roadmap</h4>
+<div class="space-y-8">
+<div class="flex items-center gap-6">
+<div class="relative w-16 h-16 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-surface-container-highest" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor" stroke-width="4"></circle>
+<circle class="text-primary" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor" stroke-dasharray="175" stroke-dashoffset="0" stroke-width="4"></circle>
+</svg>
+<span class="absolute text-xs font-bold text-primary">100%</span>
+</div>
+<div>
+<p class="font-bold text-primary">Košice Hub</p>
+<p class="text-xs text-on-surface-variant">Fully Operational</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative w-16 h-16 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-surface-container-highest" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor" stroke-width="4"></circle>
+<circle class="text-primary/30" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor" stroke-dasharray="175" stroke-dashoffset="140" stroke-width="4"></circle>
+</svg>
+<span class="absolute text-xs font-bold text-outline">20%</span>
+</div>
+<div>
+<p class="font-bold text-primary/60">Prešov Clinic</p>
+<p class="text-xs text-outline">Launching 2026</p>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-primary/10">
+<p class="text-[10px] uppercase tracking-tighter text-outline-variant font-bold">Status: Scale-up Phase A</p>
+</div>
+</div>
+</div>
+<!-- Abstract Data Texture -->
+<div class="col-span-1 md:col-span-2 bg-surface-container-low rounded-xl overflow-hidden min-h-[160px] relative">
+<div class="absolute inset-0 opacity-10 flex items-center justify-around pointer-events-none">
+<div class="w-24 h-48 bg-primary blur-3xl"></div>
+<div class="w-48 h-24 bg-custom-accent blur-3xl"></div>
+</div>
+<div class="p-8 relative flex flex-col md:flex-row justify-between items-center gap-8 h-full">
+<div class="flex gap-4">
+<div class="w-1.5 h-12 bg-primary rounded-full"></div>
+<div class="w-1.5 h-12 bg-primary/60 rounded-full"></div>
+<div class="w-1.5 h-12 bg-primary/30 rounded-full"></div>
+<div class="w-1.5 h-12 bg-custom-accent rounded-full"></div>
+</div>
+<p class="font-label text-sm text-on-surface-variant/70 italic text-center md:text-right max-w-md">
+                        "Treating people not as social cases, but as health-priority citizens allows for systemic rehabilitation."
+                    </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Secondary Content Section: The Model -->
+<section class="mt-32">
+<div class="mb-16">
+<h3 class="text-xs font-label uppercase tracking-[0.3em] text-outline mb-4">Precision Social Metrics</h3>
+<h2 class="text-3xl font-headline font-bold text-primary">Multidisciplinary Impact Architecture</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="bg-surface-container-lowest p-8 rounded-xl space-y-4">
+<span class="material-symbols-outlined text-primary/60" data-icon="psychology">psychology</span>
+<h4 class="font-bold">Mental Support</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Psychiatrists and psychologists providing trauma-informed psychiatric stabilization.</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl space-y-4">
+<span class="material-symbols-outlined text-primary/60" data-icon="group">group</span>
+<h4 class="font-bold">Field Teams</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Mobile medical assistance reaching those unable to visit stationary clinics.</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl space-y-4">
+<span class="material-symbols-outlined text-primary/60" data-icon="styler">styler</span>
+<h4 class="font-bold">Fee Removal</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Systemic removal of administrative and bureaucratic barriers to entry.</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl space-y-4">
+<span class="material-symbols-outlined text-primary/60" data-icon="route">route</span>
+<h4 class="font-bold">Patient Navigation</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Accompanying clients to specialist appointments to ensure follow-through.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Updated to match Home Page -->
+<footer class="bg-teal-950 dark:bg-black w-full py-12 px-12">
+<div class="flex flex-col md:flex-row justify-between items-center w-full max-w-[1440px] mx-auto border-t border-white/5 pt-12">
+<div class="mb-8 md:mb-0">
+<div class="font-headline font-black text-white text-2xl mb-2">Nadácia Dedo</div>
+<p class="text-slate-400 text-xs tracking-normal">© 2024 Nadácia Dedo. The Living Ledger of Social Impact.</p>
+</div>
+<div class="flex gap-8 font-label text-xs tracking-normal text-slate-400">
+<a class="hover:text-teal-300 transition-all" href="#">Privacy Policy</a>
+<a class="hover:text-teal-300 transition-all" href="#">Data Ethics</a>
+<a class="hover:text-teal-300 transition-all" href="#">Annual Report</a>
+<a class="hover:text-teal-300 transition-all" href="#">Contact</a>
+</div>
+</div>
+</footer>
+</body></html>

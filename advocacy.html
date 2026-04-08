@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#88d5c4",
+                        "on-tertiary": "#ffffff",
+                        "primary": "#036457",
+                        "on-surface-variant": "#3f4946",
+                        "surface": "#f8f9fa",
+                        "surface-container-high": "#e7e8e9",
+                        "surface-variant": "#e1e3e4",
+                        "on-tertiary-fixed-variant": "#713526",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#c9e7f7",
+                        "inverse-surface": "#2e3132",
+                        "secondary-fixed-dim": "#adcbda",
+                        "on-secondary-fixed": "#001f2a",
+                        "primary-container": "#2d7d6f",
+                        "on-secondary-fixed-variant": "#2e4b57",
+                        "inverse-primary": "#88d5c4",
+                        "on-surface": "#191c1d",
+                        "on-secondary-container": "#4a6774",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#c6e4f4",
+                        "on-tertiary-fixed": "#390b02",
+                        "primary-fixed": "#a4f1e0",
+                        "background": "#f8f9fa",
+                        "outline": "#6f7976",
+                        "surface-bright": "#f8f9fa",
+                        "inverse-on-surface": "#f0f1f2",
+                        "on-primary-fixed": "#00201b",
+                        "surface-tint": "#126a5d",
+                        "on-tertiary-container": "#fff4f2",
+                        "on-primary-fixed-variant": "#005045",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "#d9dadb",
+                        "surface-container-low": "#f3f4f5",
+                        "secondary": "#466270",
+                        "outline-variant": "#bec9c5",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "on-background": "#191c1d",
+                        "tertiary-fixed-dim": "#ffb4a2",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-primary-container": "#d5fff4",
+                        "tertiary-container": "#a45e4c",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#874636",
+                        "surface-container": "#edeeef",
+                        "tertiary-fixed": "#ffdad2",
+                        "dark-teal-footer": "#022c26"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; min-height: 2500px; }
+        .font-manrope { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .nav-item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown { transition: all 0.2s ease-out; transform: translateY(8px); opacity: 0; visibility: hidden; }
+        .metric-card:hover .hover-detail { opacity: 1; transform: translateY(0); }
+        .hover-detail { opacity: 0; transform: translateY(10px); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    </style>
+</head>
+<body class="text-on-surface selection:bg-primary-fixed-dim selection:text-on-primary-fixed bg-white">
+<!-- Updated TopAppBar based on SCREEN_115 -->
+<header class="bg-white/80 backdrop-blur-xl z-[60] relative border-b border-outline-variant/10">
+<div class="flex justify-between items-center w-full max-w-[1440px] mx-auto px-12 h-20">
+<a href="home.html" class="text-xl font-bold text-primary uppercase tracking-widest font-headline no-underline">Nadácia Dedo</a>
+<nav class="hidden lg:flex items-center gap-8 ml-auto">
+<div class="relative group nav-item">
+<a class="text-sm font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors py-8 inline-flex items-center gap-1" href="#">
+                            What we do
+                            <span class="material-symbols-outlined text-sm">expand_more</span>
+</a>
+<div class="dropdown absolute top-full left-0 w-48 bg-white shadow-xl border border-outline-variant/20 rounded-xl overflow-hidden py-2 z-[60]">
+<a class="block px-4 py-3 text-sm text-on-surface-variant hover:bg-primary-container/10 hover:text-primary transition-colors" href="#">Our impact</a>
+<a class="block px-4 py-3 text-sm text-on-surface-variant hover:bg-primary-container/10 hover:text-primary transition-colors" href="#">Projects</a>
+<a class="block px-4 py-3 text-sm text-on-surface-variant hover:bg-primary-container/10 hover:text-primary transition-colors" href="#">News</a>
+</div>
+</div>
+<div class="relative group nav-item">
+<a class="text-sm font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors py-8 inline-flex items-center gap-1" href="#">
+                            About
+                            <span class="material-symbols-outlined text-sm">expand_more</span>
+</a>
+<div class="dropdown absolute top-full left-0 w-56 bg-white shadow-xl border border-outline-variant/20 rounded-xl overflow-hidden py-2 z-[60]">
+<a class="block px-4 py-3 text-sm text-on-surface-variant hover:bg-primary-container/10 hover:text-primary transition-colors" href="#">About the foundation</a>
+<a class="block px-4 py-3 text-sm text-on-surface-variant hover:bg-primary-container/10 hover:text-primary transition-colors" href="#">Management team</a>
+<a class="block px-4 py-3 text-sm text-on-surface-variant hover:bg-primary-container/10 hover:text-primary transition-colors" href="#">Contact</a>
+</div>
+</div>
+<div class="relative group nav-item">
+<a class="text-sm font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors py-8 inline-flex items-center gap-1" href="#">
+                            Impact enablers
+                            <span class="material-symbols-outlined text-sm">expand_more</span>
+</a>
+<div class="dropdown absolute top-full left-0 w-48 bg-white shadow-xl border border-outline-variant/20 rounded-xl overflow-hidden py-2 z-[60]">
+<a class="block px-4 py-3 text-sm text-on-surface-variant hover:bg-primary-container/10 hover:text-primary transition-colors" href="#">Partners</a>
+<a class="block px-4 py-3 text-sm text-on-surface-variant hover:bg-primary-container/10 hover:text-primary transition-colors" href="#">2%</a>
+</div>
+</div>
+<div class="relative group nav-item">
+<a class="text-sm font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors py-8 inline-flex items-center gap-1" href="#">
+                            Contribute
+                            <span class="material-symbols-outlined text-sm">expand_more</span>
+</a>
+<div class="dropdown absolute top-full left-0 w-48 bg-white shadow-xl border border-outline-variant/20 rounded-xl overflow-hidden py-2 z-[60]">
+<a class="block px-4 py-3 text-sm text-on-surface-variant hover:bg-primary-container/10 hover:text-primary transition-colors" href="#">Contribute</a>
+</div>
+</div>
+</nav>
+</div>
+</header>
+<!-- Updated Secondary Nav Bar based on SCREEN_115 -->
+<div class="w-full flex justify-center pt-6 pb-2 bg-surface-container-low/30 sticky top-0 z-50 backdrop-blur-md">
+<nav class="bg-white/90 backdrop-blur-md border border-outline-variant/20 shadow-sm rounded-full w-fit mx-auto">
+<div class="px-8 py-3 flex items-center gap-2 font-inter text-[11px] font-bold uppercase tracking-wider">
+<a class="text-on-surface-variant px-5 py-2 flex items-center gap-3 hover:bg-teal-50/50 rounded-full transition-all group" href="housing.html">
+<span class="material-symbols-outlined text-xl group-hover:scale-110 transition-transform">home</span>
+                    Housing
+                </a>
+<div class="w-px h-6 bg-outline-variant/30 mx-1"></div>
+<a class="text-on-surface-variant px-5 py-2 flex items-center gap-3 hover:bg-teal-50/50 rounded-full transition-all group" href="social-services.html">
+<span class="material-symbols-outlined text-xl group-hover:scale-110 transition-transform">diversity_3</span>
+                    Social Services
+                </a>
+<div class="w-px h-6 bg-outline-variant/30 mx-1"></div>
+<a class="text-on-surface-variant px-5 py-2 flex items-center gap-3 hover:bg-teal-50/50 rounded-full transition-all group" href="employment.html">
+<span class="material-symbols-outlined text-xl group-hover:scale-110 transition-transform">work</span>
+                    Employment
+                </a>
+<div class="w-px h-6 bg-outline-variant/30 mx-1"></div>
+<a class="text-on-surface-variant px-5 py-2 flex items-center gap-3 hover:bg-teal-50/50 rounded-full transition-all group" href="health.html">
+<span class="material-symbols-outlined text-xl group-hover:scale-110 transition-transform">medical_services</span>
+                    Health
+                </a>
+<div class="w-px h-6 bg-outline-variant/30 mx-1"></div>
+<a class="bg-primary text-white px-5 py-2 flex items-center gap-3 rounded-full shadow-md transition-all group" href="advocacy.html">
+<span class="material-symbols-outlined text-xl fill-1" style="font-variation-settings: 'FILL' 1;">campaign</span>
+                    Advocacy
+                </a>
+</div>
+</nav>
+</div>
+<main class="pt-16 pb-32 px-16 max-w-[1440px] mx-auto">
+<!-- Hero Section -->
+<section class="mb-24 max-w-4xl">
+<h1 class="font-headline font-extrabold text-7xl text-primary tracking-tighter mb-10 leading-[0.95]">
+                Advocacy and research
+            </h1>
+<p class="text-2xl text-on-surface-variant font-body leading-relaxed max-w-3xl">
+                We work closely with cities, public institutions, and European networks to create systemic changes in housing policy. Our research-driven approach ensures that advocacy is backed by robust data, transforming the way homelessness is addressed at both legislative and societal levels.
+            </p>
+</section>
+<!-- Data Visualization (The Living Ledger) -->
+<section class="mb-32">
+<div class="flex items-center gap-4 mb-16">
+<span class="h-px flex-grow bg-outline-variant opacity-20"></span>
+<h2 class="font-headline font-bold text-[11px] uppercase tracking-[0.3em] text-primary-container/80">Strategic Impact Metrics</h2>
+<span class="h-px flex-grow bg-outline-variant opacity-20"></span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Row 1 -->
+<div class="metric-card relative group bg-white p-10 rounded-2xl border border-gray-100 shadow-sm hover:border-primary-fixed-dim transition-all duration-300 overflow-hidden">
+<div class="flex flex-col gap-3">
+<span class="text-[10px] font-black font-label uppercase tracking-[0.2em] text-primary-container">Policy Involvement</span>
+<span class="text-6xl font-headline font-black text-on-surface">111</span>
+<span class="text-sm font-body text-on-surface-variant/70 leading-relaxed">Participation in Policy Making (since 2020)</span>
+</div>
+<div class="hover-detail absolute inset-0 bg-primary/95 p-10 flex flex-col justify-center text-white pointer-events-none">
+<p class="text-sm font-body leading-relaxed">Active contributions to regional and national housing legislative sessions and framework adjustments.</p>
+</div>
+</div>
+<div class="metric-card relative group bg-white p-10 rounded-2xl border border-gray-100 shadow-sm hover:border-primary-fixed-dim transition-all duration-300 overflow-hidden">
+<div class="flex flex-col gap-3">
+<span class="text-[10px] font-black font-label uppercase tracking-[0.2em] text-primary-container">Collaboration</span>
+<span class="text-6xl font-headline font-black text-on-surface">12</span>
+<span class="text-sm font-body text-on-surface-variant/70 leading-relaxed">Working Groups</span>
+</div>
+<div class="hover-detail absolute inset-0 bg-primary/95 p-10 flex flex-col justify-center text-white pointer-events-none">
+<p class="text-sm font-body leading-relaxed">Thematic clusters focusing on social inclusion, legal reform, and urban planning integration.</p>
+</div>
+</div>
+<div class="metric-card relative group bg-white p-10 rounded-2xl border border-gray-100 shadow-sm hover:border-primary-fixed-dim transition-all duration-300 overflow-hidden">
+<div class="flex flex-col gap-3">
+<span class="text-[10px] font-black font-label uppercase tracking-[0.2em] text-primary-container">Knowledge Base</span>
+<span class="text-6xl font-headline font-black text-on-surface">1,220</span>
+<span class="text-sm font-body text-on-surface-variant/70 leading-relaxed">Published Articles</span>
+</div>
+<div class="hover-detail absolute inset-0 bg-primary/95 p-10 flex flex-col justify-center text-white pointer-events-none">
+<p class="text-sm font-body leading-relaxed">Dissemination of findings through peer-reviewed journals, news portals, and internal research databases.</p>
+</div>
+</div>
+<div class="metric-card relative group bg-white p-10 rounded-2xl border border-gray-100 shadow-sm hover:border-primary-fixed-dim transition-all duration-300 overflow-hidden">
+<div class="flex flex-col gap-3">
+<span class="text-[10px] font-black font-label uppercase tracking-[0.2em] text-primary-container">Discourse</span>
+<span class="text-6xl font-headline font-black text-on-surface">61</span>
+<span class="text-sm font-body text-on-surface-variant/70 leading-relaxed">Discussions / Seminars</span>
+</div>
+<div class="hover-detail absolute inset-0 bg-primary/95 p-10 flex flex-col justify-center text-white pointer-events-none">
+<p class="text-sm font-body leading-relaxed">Expert-led sessions facilitating dialogue between policymakers and social practitioners.</p>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="metric-card relative group bg-white p-10 rounded-2xl border border-gray-100 shadow-sm hover:border-primary-fixed-dim transition-all duration-300 overflow-hidden">
+<div class="flex flex-col gap-3">
+<span class="text-[10px] font-black font-label uppercase tracking-[0.2em] text-primary-container">Media Presence</span>
+<span class="text-6xl font-headline font-black text-primary">1,308</span>
+<span class="text-sm font-body text-on-surface-variant/70 leading-relaxed">Media Impact (GRP)</span>
+</div>
+<div class="hover-detail absolute inset-0 bg-primary/95 p-10 flex flex-col justify-center text-white pointer-events-none">
+<p class="text-sm font-body leading-relaxed">Cumulative reach across TV, radio, and digital outlets normalized for audience impact.</p>
+</div>
+</div>
+<div class="metric-card relative group bg-white p-10 rounded-2xl border border-gray-100 shadow-sm hover:border-primary-fixed-dim transition-all duration-300 overflow-hidden">
+<div class="flex flex-col gap-3">
+<span class="text-[10px] font-black font-label uppercase tracking-[0.2em] text-primary-container">Brand Value</span>
+<span class="text-5xl font-headline font-black text-on-surface tracking-tighter">€2,400,000</span>
+<span class="text-sm font-body text-on-surface-variant/70 leading-relaxed">AVE Value</span>
+</div>
+<div class="hover-detail absolute inset-0 bg-primary/95 p-10 flex flex-col justify-center text-white pointer-events-none">
+<p class="text-sm font-body leading-relaxed">Advertising Value Equivalency of earned media coverage and editorial mentions.</p>
+</div>
+</div>
+<div class="metric-card relative group bg-white p-10 rounded-2xl border border-gray-100 shadow-sm hover:border-primary-fixed-dim transition-all duration-300 overflow-hidden">
+<div class="flex flex-col gap-3">
+<span class="text-[10px] font-black font-label uppercase tracking-[0.2em] text-primary-container">Policy Reform</span>
+<span class="text-6xl font-headline font-black text-on-surface">6</span>
+<span class="text-sm font-body text-on-surface-variant/70 leading-relaxed">New Strategies</span>
+</div>
+<div class="hover-detail absolute inset-0 bg-primary/95 p-10 flex flex-col justify-center text-white pointer-events-none">
+<p class="text-sm font-body leading-relaxed">Full-scale municipal strategies adopted using our data-driven 'Living Ledger' framework.</p>
+</div>
+</div>
+<div class="metric-card relative group bg-white p-10 rounded-2xl border border-gray-100 shadow-sm hover:border-primary-fixed-dim transition-all duration-300 overflow-hidden">
+<div class="flex flex-col gap-3">
+<span class="text-[10px] font-black font-label uppercase tracking-[0.2em] text-primary-container">Research Output</span>
+<span class="text-6xl font-headline font-black text-on-surface">6</span>
+<span class="text-sm font-body text-on-surface-variant/70 leading-relaxed">Research Studies</span>
+</div>
+<div class="hover-detail absolute inset-0 bg-primary/95 p-10 flex flex-col justify-center text-white pointer-events-none">
+<p class="text-sm font-body leading-relaxed">In-depth statistical analyses regarding rental market pressures and social housing availability.</p>
+</div>
+</div>
+</div>
+<!-- Partnerships -->
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+<div class="bg-surface-container-low/50 p-8 rounded-2xl flex items-center gap-6">
+<span class="material-symbols-outlined text-primary/60" style="font-size: 40px;">account_balance</span>
+<div>
+<p class="text-3xl font-headline font-black text-on-surface">12</p>
+<p class="text-[10px] uppercase font-black tracking-[0.2em] text-outline/60">Public Admin</p>
+</div>
+</div>
+<div class="bg-surface-container-low/50 p-8 rounded-2xl flex items-center gap-6">
+<span class="material-symbols-outlined text-primary/60" style="font-size: 40px;">corporate_fare</span>
+<div>
+<p class="text-3xl font-headline font-black text-on-surface">6</p>
+<p class="text-[10px] uppercase font-black tracking-[0.2em] text-outline/60">Private Sector</p>
+</div>
+</div>
+<div class="bg-surface-container-low/50 p-8 rounded-2xl flex items-center gap-6">
+<span class="material-symbols-outlined text-primary/60" style="font-size: 40px;">public</span>
+<div>
+<p class="text-3xl font-headline font-black text-on-surface">8</p>
+<p class="text-[10px] uppercase font-black tracking-[0.2em] text-outline/60">Intl Orgs</p>
+</div>
+</div>
+<div class="bg-surface-container-low/50 p-8 rounded-2xl flex items-center gap-6">
+<span class="material-symbols-outlined text-primary/60" style="font-size: 40px;">groups_3</span>
+<div>
+<p class="text-3xl font-headline font-black text-on-surface">24</p>
+<p class="text-[10px] uppercase font-black tracking-[0.2em] text-outline/60">NGOs</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Secondary Content -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-32 items-start mb-32">
+<div class="space-y-16">
+<div>
+<h3 class="font-headline font-extrabold text-3xl mb-8 text-primary flex items-center gap-4">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+                        The PUB Platform
+                    </h3>
+<p class="text-xl text-on-surface-variant leading-relaxed font-body">
+                        The Platform for Urban Betterment (PUB) serves as our central hub for collaborative research. By aggregating real-time data from local municipal departments and social providers, we create a unified ledger of needs and available resources. This platform eliminates administrative silos and allows for precision-targeted advocacy.
+                    </p>
+</div>
+<div>
+<h3 class="font-headline font-extrabold text-3xl mb-8 text-primary flex items-center gap-4">
+<span class="material-symbols-outlined" data-icon="language">language</span>
+                        FEANTSA Network
+                    </h3>
+<p class="text-xl text-on-surface-variant leading-relaxed font-body">
+                        As an active member of FEANTSA (European Federation of National Organisations Working with the Homeless), Nadácia Dedo contributes local Slovakian insights to the European-wide database. This participation ensures our advocacy aligns with international best practices and contributes to the broader Continental strategy for ending homelessness.
+                    </p>
+</div>
+</div>
+<!-- Visual Emphasis Area -->
+<div class="bg-surface-container-low/30 p-16 rounded-[2.5rem] border-l-8 border-primary relative overflow-hidden">
+<span class="material-symbols-outlined absolute -top-10 -right-10 text-[200px] opacity-[0.03] rotate-12">format_quote</span>
+<blockquote class="font-headline italic text-4xl text-on-surface font-light leading-snug mb-12 relative z-10">
+                    "Advocacy is not merely asking for change; it is presenting the mathematical proof that change is both necessary and achievable through structured policy."
+                </blockquote>
+<div class="flex gap-4">
+<div class="h-1.5 w-32 bg-primary rounded-full"></div>
+<div class="h-1.5 w-16 bg-outline-variant/30 rounded-full"></div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer (Full-width, Dark Teal, consistent with other pages) -->
+<footer class="bg-teal-950 dark:bg-black w-full py-12 px-12">
+<div class="flex flex-col md:flex-row justify-between items-center w-full max-w-[1440px] mx-auto border-t border-white/5 pt-12">
+<div class="mb-8 md:mb-0">
+<div class="font-headline font-black text-white text-2xl mb-2">Nadácia Dedo</div>
+<p class="text-slate-400 text-xs tracking-normal">© 2024 Nadácia Dedo. The Living Ledger of Social Impact.</p>
+</div>
+<div class="flex gap-8 font-label text-xs tracking-normal text-slate-400">
+<a class="hover:text-teal-300 transition-all" href="#">Privacy Policy</a>
+<a class="hover:text-teal-300 transition-all" href="#">Data Ethics</a>
+<a class="hover:text-teal-300 transition-all" href="#">Annual Report</a>
+<a class="hover:text-teal-300 transition-all" href="#">Contact</a>
+</div>
+</div>
+</footer>
+</body></html>
