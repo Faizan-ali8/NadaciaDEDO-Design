@@ -89,17 +89,8 @@
             position: relative;
             background: #f8f9fa;
         }
-        .metric-card:hover .metric-breakdown { opacity: 1; transform: translateY(0); pointer-events: auto; }
-        .metric-breakdown { 
-            opacity: 0; 
-            transform: translateY(10px); 
-            pointer-events: none; 
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
-            z-index: 50; 
-            width: 100%;
-        }
-        .metric-card { z-index: 10; }
-        .metric-card:hover { z-index: 20; }
+        .metric-card:hover .regional-breakdown { opacity: 1; transform: translateY(0); }
+        .regional-breakdown { transition: all 0.3s ease-out; transform: translateY(10px); }
 
         /* Scroll-triggered animations */
         .fade-in-left {
@@ -126,6 +117,17 @@
         /* Stagger children */
         .fade-in-up.delay-1 { transition-delay: 0.15s; }
         .fade-in-up.delay-2 { transition-delay: 0.3s; }
+        .fade-in-up.delay-3 { transition-delay: 0.45s; }
+        .fade-in-up.delay-4 { transition-delay: 0.6s; }
+
+        /* Card hover lift */
+        .card-lift {
+            transition: scale 0.3s ease-out, box-shadow 0.3s ease-out;
+        }
+        .card-lift:hover {
+            scale: 1.05;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
 
         /* Subtle hover zoom on image */
         .img-hover-zoom img {
@@ -221,107 +223,89 @@
 <section class="w-full pb-16">
 <div class="bg-primary/5 rounded-[2.5rem] p-12 border border-primary/10 relative">
 <div class="absolute top-0 right-0 p-8 opacity-10">
-<span class="material-symbols-outlined text-[12rem]" style="">query_stats</span>
+<span class="material-symbols-outlined text-[12rem]">query_stats</span>
 </div>
 <div class="grid grid-cols-12 gap-8 items-end relative z-10">
 <!-- Number of Apartments -->
-<div class="col-span-4 relative metric-card group/card">
+<div class="col-span-4 relative metric-card group/card overflow-hidden rounded-2xl p-4">
 <div class="flex flex-col gap-1 mb-8">
-<span class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary" style="">Living Ledger: Metrics</span>
-<h3 class="text-xs font-bold uppercase tracking-widest text-on-surface-variant" style="">Number of Apartments</h3>
+<span class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary">Living Ledger: Metrics</span>
+<h3 class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Number of Apartments</h3>
 </div>
 <div class="flex items-center gap-6">
-<div class="w-20 h-20 bg-white rounded-2xl shadow-sm border border-primary/5 flex items-center justify-center transition-transform group-hover/card:scale-105">
+<div class="w-20 h-20 bg-white rounded-2xl shadow-sm border border-primary/5 flex items-center justify-center">
 <span class="material-symbols-outlined text-4xl text-primary" style='font-variation-settings: "FILL" 1;'>home</span>
 </div>
 <div>
-<div class="text-6xl font-headline font-black text-primary leading-none" style="">40</div>
-<div class="text-[10px] font-bold uppercase tracking-widest text-outline mt-1" style="">Current total</div>
+<div class="text-6xl font-headline font-black text-primary leading-none counter" data-target="40">0</div>
+<div class="text-[10px] font-bold uppercase tracking-widest text-outline mt-1">Current total</div>
 </div>
 </div>
-<!-- Breakdown on Hover -->
-<div class="metric-breakdown absolute top-[calc(100%+1.5rem)] left-0 right-0 flex gap-4"><div class="flex-1 bg-[#d3e9e5] p-5 rounded-xl shadow-lg border border-primary/10 flex flex-col items-center text-center">
-<div class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/70 mb-3">Kosice</div>
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-3xl text-primary/60" style='font-variation-settings: "FILL" 1;'>home</span>
-<div class="text-3xl font-headline font-black text-primary leading-none">36</div>
+<div class="regional-breakdown absolute inset-0 bg-primary p-8 text-white opacity-0 flex flex-col justify-center rounded-2xl">
+<div class="text-[10px] font-bold uppercase tracking-widest mb-4 opacity-70">Regional Breakdown</div>
+<div class="flex justify-between items-center mb-2 text-sm">
+<span>Košice</span>
+<span class="font-bold">36</span>
 </div>
-<div class="text-[10px] font-bold uppercase tracking-widest text-primary/60 mt-2">Current</div>
+<div class="flex justify-between items-center text-sm">
+<span>Prešov</span>
+<span class="font-bold">4</span>
 </div>
-<div class="flex-1 bg-[#d3e9e5] p-5 rounded-xl shadow-lg border border-primary/10 flex flex-col items-center text-center">
-<div class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/70 mb-3">Presov</div>
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-3xl text-primary/60" style='font-variation-settings: "FILL" 1;'>home</span>
-<div class="text-3xl font-headline font-black text-primary leading-none">4</div>
 </div>
-<div class="text-[10px] font-bold uppercase tracking-widest text-primary/60 mt-2">Current</div>
-</div></div>
 </div>
 <!-- Number of Clients -->
-<div class="col-span-4 relative metric-card group/card">
+<div class="col-span-4 relative metric-card group/card overflow-hidden rounded-2xl p-4">
 <div class="flex flex-col gap-1 mb-8">
-<span class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary invisible" style="">Living Ledger</span>
-<h3 class="text-xs font-bold uppercase tracking-widest text-on-surface-variant" style="">Number of Clients</h3>
+<span class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary invisible">Living Ledger</span>
+<h3 class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Number of Clients</h3>
 </div>
 <div class="flex items-center gap-6">
-<div class="w-20 h-20 bg-white rounded-2xl shadow-sm border border-primary/5 flex items-center justify-center transition-transform group-hover/card:scale-105">
-<span class="material-symbols-outlined text-4xl text-primary" style="">diversity_1</span>
+<div class="w-20 h-20 bg-white rounded-2xl shadow-sm border border-primary/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-primary">diversity_1</span>
 </div>
 <div>
-<div class="text-6xl font-headline font-black text-primary leading-none" style="">135</div>
-<div class="text-[10px] font-bold uppercase tracking-widest text-outline mt-1" style="">Direct impact</div>
+<div class="text-6xl font-headline font-black text-primary leading-none counter" data-target="135">0</div>
+<div class="text-[10px] font-bold uppercase tracking-widest text-outline mt-1">Direct impact</div>
 </div>
 </div>
-<!-- Breakdown on Hover (Using sample logic from image_20) -->
-<div class="metric-breakdown absolute top-[calc(100%+1.5rem)] left-0 right-0 flex gap-4"><div class="flex-1 bg-[#d3e9e5] p-5 rounded-xl shadow-lg border border-primary/10 flex flex-col items-center text-center">
-<div class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/70 mb-3">Kosice</div>
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-3xl text-primary/60">family_restroom</span>
-<div class="text-3xl font-headline font-black text-primary leading-none">120</div>
+<div class="regional-breakdown absolute inset-0 bg-primary p-8 text-white opacity-0 flex flex-col justify-center rounded-2xl">
+<div class="text-[10px] font-bold uppercase tracking-widest mb-4 opacity-70">Regional Breakdown</div>
+<div class="flex justify-between items-center mb-2 text-sm">
+<span>Košice</span>
+<span class="font-bold">120</span>
 </div>
-<div class="text-[10px] font-bold uppercase tracking-widest text-primary/60 mt-2">Current</div>
+<div class="flex justify-between items-center text-sm">
+<span>Prešov</span>
+<span class="font-bold">15</span>
 </div>
-<div class="flex-1 bg-[#d3e9e5] p-5 rounded-xl shadow-lg border border-primary/10 flex flex-col items-center text-center">
-<div class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/70 mb-3">Presov</div>
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-3xl text-primary/60">family_restroom</span>
-<div class="text-3xl font-headline font-black text-primary leading-none">15</div>
 </div>
-<div class="text-[10px] font-bold uppercase tracking-widest text-primary/60 mt-2">Current</div>
-</div></div>
 </div>
 <!-- Nights at Home -->
-<div class="col-span-4 relative metric-card group/card">
+<div class="col-span-4 relative metric-card group/card overflow-hidden rounded-2xl p-4">
 <div class="flex flex-col gap-1 mb-8">
 <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary invisible">Living Ledger</span>
 <h3 class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Nights at Home</h3>
 </div>
 <div class="flex items-center gap-6">
-<div class="w-20 h-20 bg-white rounded-2xl shadow-sm border border-primary/5 flex items-center justify-center transition-transform group-hover/card:scale-105">
+<div class="w-20 h-20 bg-white rounded-2xl shadow-sm border border-primary/5 flex items-center justify-center">
 <span class="material-symbols-outlined text-4xl text-primary">bedtime</span>
 </div>
 <div>
-<div class="text-6xl font-headline font-black text-primary leading-none">193,038</div>
+<div class="text-6xl font-headline font-black text-primary leading-none counter" data-target="193038" data-format="comma">0</div>
 <div class="text-[10px] font-bold uppercase tracking-widest text-outline mt-1">Since 2020</div>
 </div>
 </div>
-<!-- Breakdown on Hover -->
-<div class="metric-breakdown absolute top-[calc(100%+1.5rem)] left-0 right-0 flex gap-4"><div class="flex-1 bg-[#d3e9e5] p-5 rounded-xl shadow-lg border border-primary/10 flex flex-col items-center text-center">
-<div class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/70 mb-3">Kosice</div>
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-3xl text-primary/60">bedtime</span>
-<div class="text-2xl font-headline font-black text-primary leading-none">180,000</div>
+<div class="regional-breakdown absolute inset-0 bg-primary p-8 text-white opacity-0 flex flex-col justify-center rounded-2xl">
+<div class="text-[10px] font-bold uppercase tracking-widest mb-4 opacity-70">Regional Breakdown</div>
+<div class="flex justify-between items-center mb-2 text-sm">
+<span>Košice</span>
+<span class="font-bold">180,000</span>
 </div>
-<div class="text-[10px] font-bold uppercase tracking-widest text-primary/60 mt-2">Since 2020</div>
+<div class="flex justify-between items-center text-sm">
+<span>Prešov</span>
+<span class="font-bold">13,038</span>
 </div>
-<div class="flex-1 bg-[#d3e9e5] p-5 rounded-xl shadow-lg border border-primary/10 flex flex-col items-center text-center">
-<div class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/70 mb-3">Presov</div>
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-3xl text-primary/60">bedtime</span>
-<div class="text-2xl font-headline font-black text-primary leading-none">13,038</div>
 </div>
-<div class="text-[10px] font-bold uppercase tracking-widest text-primary/60 mt-2">Since 2020</div>
-</div></div>
 </div>
 </div>
 </div>
@@ -357,11 +341,11 @@
 <section class="bg-surface-container-low py-32">
 <div class="w-full">
 <div class="mb-16 text-center">
-<h2 class="font-headline text-3xl font-bold mb-4" style="">The Housing Gap</h2>
-<p class="text-on-surface-variant max-w-2xl mx-auto" style="">Visualizing the scale of the crisis. Each dot represents a family seeking a place to call home.</p>
+<h2 class="fade-in-left font-headline text-3xl font-bold mb-4" style="">The Housing Gap</h2>
+<p class="fade-in-up delay-1 text-on-surface-variant max-w-2xl mx-auto" style="">Visualizing the scale of the crisis. Each dot represents a family seeking a place to call home.</p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
-<div class="sticky top-40 space-y-12">
+<div class="sticky top-40 space-y-12 fade-in-left">
 <div class="p-8 bg-surface-container-lowest rounded-xl shadow-sm">
 <h3 class="text-5xl font-headline font-black text-primary mb-2" style="">135</h3>
 <div class="text-sm font-bold uppercase tracking-widest text-outline" style="">Families Housed</div>
@@ -373,7 +357,7 @@
 <p class="mt-4 text-on-surface-variant leading-relaxed" style="">The estimated number of families currently waitlisted or in precarious housing situations across the region.</p>
 </div>
 </div>
-<div class="bg-surface-container-lowest p-1 rounded-xl shadow-inner min-h-[600px] relative overflow-hidden">
+<div class="bg-surface-container-lowest p-1 rounded-xl shadow-inner min-h-[600px] relative overflow-hidden fade-in-right">
 <div class="flex flex-wrap gap-[2px] p-4">
 <div class="flex flex-wrap gap-[2px]">
 <div class="w-2 h-2 bg-primary rounded-full"></div><div class="w-2 h-2 bg-primary rounded-full"></div><div class="w-2 h-2 bg-primary rounded-full"></div><div class="w-2 h-2 bg-primary rounded-full"></div><div class="w-2 h-2 bg-primary rounded-full"></div>
@@ -395,32 +379,32 @@
 <!-- Collaborative Engine Section -->
 <section class="w-full py-32">
 <div class="mb-20">
-<h2 class="font-headline text-4xl font-bold mb-4" style="">The Collaborative Engine</h2>
-<p class="text-on-surface-variant text-lg" style="">Housing is only the first step. Our multidisciplinary team ensures it's the last move they'll ever have to make.</p>
+<h2 class="fade-in-left font-headline text-4xl font-bold mb-4" style="">The Collaborative Engine</h2>
+<p class="fade-in-up delay-1 text-on-surface-variant text-lg" style="">Housing is only the first step. Our multidisciplinary team ensures it's the last move they'll ever have to make.</p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-<div class="p-8 bg-surface-container rounded-xl transition-all hover:bg-surface-bright group">
+<div class="fade-in-up delay-1 card-lift p-8 bg-surface-container rounded-xl transition-all hover:bg-surface-bright group cursor-default">
 <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
 <span class="material-symbols-outlined text-primary text-3xl" style="">groups</span>
 </div>
 <h3 class="font-headline font-bold text-xl mb-3" style="">Social Worker</h3>
 <p class="text-sm text-on-surface-variant leading-relaxed" style="">Navigates complex administrative systems and provides daily logistical support for community reintegration.</p>
 </div>
-<div class="p-8 bg-surface-container rounded-xl transition-all hover:bg-surface-bright group">
+<div class="fade-in-up delay-2 card-lift p-8 bg-surface-container rounded-xl transition-all hover:bg-surface-bright group cursor-default">
 <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
 <span class="material-symbols-outlined text-primary text-3xl" style="">medical_services</span>
 </div>
 <h3 class="font-headline font-bold text-xl mb-3" style="">Health Worker</h3>
 <p class="text-sm text-on-surface-variant leading-relaxed" style="">Coordinates medical appointments, medication management, and preventative health education.</p>
 </div>
-<div class="p-8 bg-surface-container rounded-xl transition-all hover:bg-surface-bright group">
+<div class="fade-in-up delay-3 card-lift p-8 bg-surface-container rounded-xl transition-all hover:bg-surface-bright group cursor-default">
 <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
 <span class="material-symbols-outlined text-primary text-3xl" style="">psychology</span>
 </div>
 <h3 class="font-headline font-bold text-xl mb-3" style="">Psychologist</h3>
 <p class="text-sm text-on-surface-variant leading-relaxed" style="">Provides trauma-informed therapy and emotional resilience coaching to rebuild sense of self.</p>
 </div>
-<div class="p-8 bg-surface-container rounded-xl transition-all hover:bg-surface-bright group">
+<div class="fade-in-up delay-4 card-lift p-8 bg-surface-container rounded-xl transition-all hover:bg-surface-bright group cursor-default">
 <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
 <span class="material-symbols-outlined text-primary text-3xl" style="">gavel</span>
 </div>
@@ -428,7 +412,7 @@
 <p class="text-sm text-on-surface-variant leading-relaxed" style="">Manages legal status, debt resolution, and protects the rights of tenants in our housing network.</p>
 </div>
 </div>
-<div class="mt-16 flex items-center gap-12 p-12 bg-primary/5 rounded-2xl border border-primary/10">
+<div class="fade-in-up mt-16 flex items-center gap-12 p-12 bg-primary/5 rounded-2xl border border-primary/10">
 <div class="flex-shrink-0">
 <span class="material-symbols-outlined text-primary text-5xl" style='font-variation-settings: "FILL" 1;'>handshake</span>
 </div>
@@ -442,16 +426,16 @@
 <section class="w-full py-32">
 <div class="bg-primary-container text-on-primary-container rounded-3xl overflow-hidden grid grid-cols-1 md:grid-cols-2">
 <div class="p-16 flex flex-col justify-center">
-<h2 class="font-headline text-5xl font-black mb-8 leading-tight" style="">The family belongs to the home. Rent it to us.</h2>
-<p class="text-lg opacity-90 mb-10 leading-relaxed" style="">
+<h2 class="fade-in-left font-headline text-5xl font-black mb-8 leading-tight" style="">The family belongs to the home. Rent it to us.</h2>
+<p class="fade-in-up delay-1 text-lg opacity-90 mb-10 leading-relaxed" style="">
                             Do you have a vacant apartment? By renting to Nadasia Dedto, you get guaranteed rent, professional property management, and the profound satisfaction of ending a family's homelessness.
                         </p>
-<div class="flex gap-4">
+<div class="fade-in-up delay-2 flex gap-4">
 <button class="bg-on-primary-container text-primary-container px-8 py-4 rounded-xl font-headline font-bold hover:bg-white transition-colors" style="">Become a Partner</button>
-<button class="border border-white/30 text-white px-8 py-4 rounded-xl font-headline font-bold hover:bg-white/10 transition-colors" style="">Learn about Guarantees</button>
+<button class="border border-white/30 text-white px-8 py-4 rounded-xl font-headline font-bold hover:bg-white transition-colors" style="">Learn about Guarantees</button>
 </div>
 </div>
-<div class="relative min-h-[400px] bg-primary/20 flex items-center justify-center">
+<div class="fade-in-right relative min-h-[400px] bg-primary/20 flex items-center justify-center">
 <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 32px 32px;"></div>
 <div class="relative z-10 p-12 text-center">
 <div class="w-48 h-64 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 transform -rotate-6 translate-x-12 translate-y-8">
@@ -494,5 +478,47 @@
     document.querySelectorAll('.fade-in-left, .fade-in-right, .fade-in-up').forEach(el => {
         observer.observe(el);
     });
+
+    const counters = document.querySelectorAll('.counter');
+    const duration = 2000;
+
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const target = parseFloat(el.dataset.target);
+                const decimals = parseInt(el.dataset.decimals) || 0;
+                const prefix = el.dataset.prefix || '';
+                const suffix = el.dataset.suffix || '';
+                const useComma = el.dataset.format === 'comma';
+                const startTime = performance.now();
+
+                function update(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    let value = eased * target;
+
+                    if (decimals > 0) {
+                        value = value.toFixed(decimals);
+                    } else {
+                        value = Math.floor(value);
+                        if (useComma) value = value.toLocaleString();
+                    }
+
+                    el.textContent = prefix + value + suffix;
+
+                    if (progress < 1) {
+                        requestAnimationFrame(update);
+                    }
+                }
+
+                requestAnimationFrame(update);
+                counterObserver.unobserve(el);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    counters.forEach(counter => counterObserver.observe(counter));
 </script>
 </body></html>

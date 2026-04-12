@@ -94,10 +94,24 @@
         }
         .animate-counter {
             animation: countUp 1.5s ease-out forwards;
+            transition: scale 0.3s ease-out, box-shadow 0.3s ease-out;
+        }
+        .animate-counter:hover {
+            scale: 1.05;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
         }
         @keyframes countUp {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.20s ease-out, transform 0.4s ease-out;
+        }
+        .fade-in-section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -184,7 +198,7 @@
 <main class="flex-grow">
 <div class="max-w-[1440px] mx-auto px-12 pt-16 pb-12">
 <!-- Hero Section -->
-<section class="mb-20 relative">
+<section class="mb-20 relative fade-in-section">
 <div class="grid grid-cols-12 gap-12 items-start">
 <div class="col-span-7">
 <div class="inline-flex items-center gap-2 px-3 py-1 bg-primary-container/10 rounded-full mb-8">
@@ -204,34 +218,34 @@
 </div>
 </section>
 <!-- Live Impact Counters -->
-<section class="grid grid-cols-4 gap-8 mb-24">
+<section class="grid grid-cols-4 gap-8 mb-24 fade-in-section">
 <div class="p-8 bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 rounded-2xl animate-counter">
 <div class="flex flex-col">
-<span class="text-primary text-5xl font-extrabold font-headline mb-3">12,480+</span>
+<span class="text-primary text-5xl font-extrabold font-headline mb-3 counter" data-target="12480" data-suffix="+" data-format="comma">0</span>
 <span class="text-[11px] uppercase font-bold tracking-widest text-outline leading-tight">Work hours from<br/>employees &amp; volunteers</span>
 </div>
 </div>
 <div class="p-8 bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 rounded-2xl animate-counter" style="animation-delay: 0.1s;">
 <div class="flex flex-col">
-<span class="text-on-surface text-5xl font-extrabold font-headline mb-3">€2.4M</span>
+<span class="text-on-surface text-5xl font-extrabold font-headline mb-3 counter" data-target="2.4" data-prefix="€" data-suffix="M" data-decimals="1">0</span>
 <span class="text-[11px] uppercase font-bold tracking-widest text-outline leading-tight">Government<br/>expenditures reduced</span>
 </div>
 </div>
 <div class="p-8 bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 rounded-2xl animate-counter" style="animation-delay: 0.2s;">
 <div class="flex flex-col">
-<span class="text-on-surface text-5xl font-extrabold font-headline mb-3">840t</span>
+<span class="text-on-surface text-5xl font-extrabold font-headline mb-3 counter" data-target="840" data-suffix="t">0</span>
 <span class="text-[11px] uppercase font-bold tracking-widest text-outline leading-tight">Kilograms of<br/>CO2 avoided</span>
 </div>
 </div>
 <div class="p-8 bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 rounded-2xl animate-counter" style="animation-delay: 0.3s;">
 <div class="flex flex-col">
-<span class="text-on-surface text-5xl font-extrabold font-headline mb-3">€1.1M</span>
+<span class="text-on-surface text-5xl font-extrabold font-headline mb-3 counter" data-target="1.1" data-prefix="€" data-suffix="M" data-decimals="1">0</span>
 <span class="text-[11px] uppercase font-bold tracking-widest text-outline leading-tight">Income<br/>generated</span>
 </div>
 </div>
 </section>
 <!-- Intermediate Content Section -->
-<section class="flex justify-between items-end pb-12 mb-20">
+<section class="flex justify-between items-end pb-12 mb-20 fade-in-section">
 <div class="max-w-xl">
 <h2 class="text-3xl font-bold font-headline mb-4">Precision Social Architecture</h2>
 <p class="text-on-surface-variant font-body mb-8">Our approach integrates five core enablers to create a sustainable exit from poverty. Each intervention is tracked, verified, and optimized for maximum community impact.</p>
@@ -251,7 +265,7 @@
 </div>
 </section>
 <!-- Precision Social Architecture Detail Section -->
-<section class="pt-24 pb-32 border-t border-outline-variant/10">
+<section class="pt-24 pb-32 border-t border-outline-variant/10 fade-in-section">
 <div class="grid grid-cols-12 gap-16 items-center">
 <div class="col-span-6">
 <h2 class="text-5xl font-extrabold font-headline text-on-surface tracking-tight mb-8">Precision Social Architecture</h2>
@@ -330,4 +344,59 @@
 </div>
 </footer>
 </div>
+<script>
+const counters = document.querySelectorAll('.counter');
+const duration = 2000;
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = parseFloat(el.dataset.target);
+            const decimals = parseInt(el.dataset.decimals) || 0;
+            const prefix = el.dataset.prefix || '';
+            const suffix = el.dataset.suffix || '';
+            const useComma = el.dataset.format === 'comma';
+            const startTime = performance.now();
+
+            function update(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                let value = eased * target;
+
+                if (decimals > 0) {
+                    value = value.toFixed(decimals);
+                } else {
+                    value = Math.floor(value);
+                    if (useComma) value = value.toLocaleString();
+                }
+
+                el.textContent = prefix + value + suffix;
+
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                }
+            }
+
+            requestAnimationFrame(update);
+            observer.unobserve(el);
+        }
+    });
+}, { threshold: 0.5 });
+
+counters.forEach(counter => observer.observe(counter));
+
+const sections = document.querySelectorAll('.fade-in-section');
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            sectionObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.15 });
+
+sections.forEach(section => sectionObserver.observe(section));
+</script>
 </body></html>
