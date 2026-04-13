@@ -82,15 +82,52 @@
         .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
         .nav-item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
         .dropdown { transition: all 0.2s ease-out; transform: translateY(8px); opacity: 0; visibility: hidden; }
-        .metric-card:hover .hover-detail { opacity: 1; transform: translateY(0); }
-        .hover-detail { opacity: 0; transform: translateY(10px); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        /* Drawer-up overlay */
+        .metric-card:hover .regional-breakdown { opacity: 1; transform: translateY(0); }
+        .regional-breakdown { transition: all 0.3s ease-out; transform: translateY(10px); }
+
+        /* Card hover lift */
+        .card-lift {
+            transition: scale 0.3s ease-out, box-shadow 0.3s ease-out;
+        }
+        .card-lift:hover {
+            scale: 1.05;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Scroll-triggered animations */
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        .fade-in-left.visible,
+        .fade-in-right.visible,
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translate(0);
+        }
+        .fade-in-up.delay-1 { transition-delay: 0.15s; }
+        .fade-in-up.delay-2 { transition-delay: 0.3s; }
+        .fade-in-up.delay-3 { transition-delay: 0.45s; }
+        .fade-in-up.delay-4 { transition-delay: 0.6s; }
     </style>
 </head>
 <body class="text-on-surface selection:bg-primary-fixed-dim selection:text-on-primary-fixed bg-white">
 <!-- Updated TopAppBar based on SCREEN_115 -->
 <header class="bg-white/80 backdrop-blur-xl z-[60] relative border-b border-outline-variant/10">
 <div class="flex justify-between items-center w-full max-w-[1440px] mx-auto px-12 h-20">
-<a href="index.html" class="text-xl font-bold text-primary uppercase tracking-widest font-headline no-underline">Nadácia Dedo</a>
+<a href="index.html" class="text-2xl font-black text-primary font-headline no-underline">Nadácia Dedo</a>
 <nav class="hidden lg:flex items-center gap-8 ml-auto">
 <div class="relative group nav-item">
 <a class="text-sm font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors py-8 inline-flex items-center gap-1" href="#">
@@ -169,13 +206,18 @@
 </div>
 <main class="pt-16 pb-32 px-16 max-w-[1440px] mx-auto">
 <!-- Hero Section -->
-<section class="mb-24 max-w-4xl">
-<h1 class="font-headline font-extrabold text-7xl text-primary tracking-tighter mb-10 leading-[0.95]">
-                Advocacy and research
+<section class="mb-24 grid grid-cols-12 gap-12 items-center">
+<div class="col-span-12 lg:col-span-7">
+<h1 class="fade-in-left font-headline font-extrabold text-7xl text-primary tracking-tighter mb-10 leading-[0.95]">
+                Advocacy and <span class="text-on-surface">research</span>
             </h1>
-<p class="text-2xl text-on-surface-variant font-body leading-relaxed max-w-3xl">
+<p class="fade-in-up delay-1 text-2xl text-on-surface-variant font-body leading-relaxed max-w-3xl">
                 We work closely with cities, public institutions, and European networks to create systemic changes in housing policy. Our research-driven approach ensures that advocacy is backed by robust data, transforming the way homelessness is addressed at both legislative and societal levels.
             </p>
+</div>
+<div class="col-span-12 lg:col-span-5 fade-in-right">
+<img alt="Advocacy and Research" class="w-[120%] h-auto object-contain" src="./assets/images/advocacy-hero.png"/>
+</div>
 </section>
 <!-- Data Visualization (The Living Ledger) -->
 <section class="mb-32">
@@ -186,115 +228,115 @@
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 <!-- Row 1 -->
-<div class="metric-card relative group bg-white p-10 rounded-2xl border border-gray-100 shadow-sm hover:border-primary-fixed-dim transition-all duration-300 overflow-hidden">
+<div class="metric-card card-lift relative group bg-white p-8 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 overflow-hidden cursor-default">
 <div class="flex flex-col gap-3">
 <span class="text-[10px] font-black font-label uppercase tracking-[0.2em] text-primary-container">Policy Involvement</span>
-<span class="text-6xl font-headline font-black text-on-surface">111</span>
+<span class="text-6xl font-headline font-black text-on-surface counter" data-target="111">0</span>
 <span class="text-sm font-body text-on-surface-variant/70 leading-relaxed">Participation in Policy Making (since 2020)</span>
 </div>
-<div class="hover-detail absolute inset-0 bg-primary/95 p-10 flex flex-col justify-center text-white pointer-events-none">
+<div class="regional-breakdown absolute inset-0 bg-primary p-8 text-white opacity-0 flex flex-col justify-center">
 <p class="text-sm font-body leading-relaxed">Active contributions to regional and national housing legislative sessions and framework adjustments.</p>
 </div>
 </div>
-<div class="metric-card relative group bg-white p-10 rounded-2xl border border-gray-100 shadow-sm hover:border-primary-fixed-dim transition-all duration-300 overflow-hidden">
+<div class="metric-card card-lift relative group bg-white p-8 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 overflow-hidden cursor-default">
 <div class="flex flex-col gap-3">
 <span class="text-[10px] font-black font-label uppercase tracking-[0.2em] text-primary-container">Collaboration</span>
-<span class="text-6xl font-headline font-black text-on-surface">12</span>
+<span class="text-6xl font-headline font-black text-on-surface counter" data-target="12">0</span>
 <span class="text-sm font-body text-on-surface-variant/70 leading-relaxed">Working Groups</span>
 </div>
-<div class="hover-detail absolute inset-0 bg-primary/95 p-10 flex flex-col justify-center text-white pointer-events-none">
+<div class="regional-breakdown absolute inset-0 bg-primary p-8 text-white opacity-0 flex flex-col justify-center">
 <p class="text-sm font-body leading-relaxed">Thematic clusters focusing on social inclusion, legal reform, and urban planning integration.</p>
 </div>
 </div>
-<div class="metric-card relative group bg-white p-10 rounded-2xl border border-gray-100 shadow-sm hover:border-primary-fixed-dim transition-all duration-300 overflow-hidden">
+<div class="metric-card card-lift relative group bg-white p-8 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 overflow-hidden cursor-default">
 <div class="flex flex-col gap-3">
 <span class="text-[10px] font-black font-label uppercase tracking-[0.2em] text-primary-container">Knowledge Base</span>
-<span class="text-6xl font-headline font-black text-on-surface">1,220</span>
+<span class="text-6xl font-headline font-black text-on-surface counter" data-target="1220" data-format="comma">0</span>
 <span class="text-sm font-body text-on-surface-variant/70 leading-relaxed">Published Articles</span>
 </div>
-<div class="hover-detail absolute inset-0 bg-primary/95 p-10 flex flex-col justify-center text-white pointer-events-none">
+<div class="regional-breakdown absolute inset-0 bg-primary p-8 text-white opacity-0 flex flex-col justify-center">
 <p class="text-sm font-body leading-relaxed">Dissemination of findings through peer-reviewed journals, news portals, and internal research databases.</p>
 </div>
 </div>
-<div class="metric-card relative group bg-white p-10 rounded-2xl border border-gray-100 shadow-sm hover:border-primary-fixed-dim transition-all duration-300 overflow-hidden">
+<div class="metric-card card-lift relative group bg-white p-8 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 overflow-hidden cursor-default">
 <div class="flex flex-col gap-3">
 <span class="text-[10px] font-black font-label uppercase tracking-[0.2em] text-primary-container">Discourse</span>
-<span class="text-6xl font-headline font-black text-on-surface">61</span>
+<span class="text-6xl font-headline font-black text-on-surface counter" data-target="61">0</span>
 <span class="text-sm font-body text-on-surface-variant/70 leading-relaxed">Discussions / Seminars</span>
 </div>
-<div class="hover-detail absolute inset-0 bg-primary/95 p-10 flex flex-col justify-center text-white pointer-events-none">
+<div class="regional-breakdown absolute inset-0 bg-primary p-8 text-white opacity-0 flex flex-col justify-center">
 <p class="text-sm font-body leading-relaxed">Expert-led sessions facilitating dialogue between policymakers and social practitioners.</p>
 </div>
 </div>
 <!-- Row 2 -->
-<div class="metric-card relative group bg-white p-10 rounded-2xl border border-gray-100 shadow-sm hover:border-primary-fixed-dim transition-all duration-300 overflow-hidden">
+<div class="metric-card card-lift relative group bg-white p-8 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 overflow-hidden cursor-default">
 <div class="flex flex-col gap-3">
 <span class="text-[10px] font-black font-label uppercase tracking-[0.2em] text-primary-container">Media Presence</span>
-<span class="text-6xl font-headline font-black text-primary">1,308</span>
+<span class="text-6xl font-headline font-black text-primary counter" data-target="1308" data-format="comma">0</span>
 <span class="text-sm font-body text-on-surface-variant/70 leading-relaxed">Media Impact (GRP)</span>
 </div>
-<div class="hover-detail absolute inset-0 bg-primary/95 p-10 flex flex-col justify-center text-white pointer-events-none">
+<div class="regional-breakdown absolute inset-0 bg-primary p-8 text-white opacity-0 flex flex-col justify-center">
 <p class="text-sm font-body leading-relaxed">Cumulative reach across TV, radio, and digital outlets normalized for audience impact.</p>
 </div>
 </div>
-<div class="metric-card relative group bg-white p-10 rounded-2xl border border-gray-100 shadow-sm hover:border-primary-fixed-dim transition-all duration-300 overflow-hidden">
+<div class="metric-card card-lift relative group bg-white p-8 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 overflow-hidden cursor-default">
 <div class="flex flex-col gap-3">
 <span class="text-[10px] font-black font-label uppercase tracking-[0.2em] text-primary-container">Brand Value</span>
-<span class="text-5xl font-headline font-black text-on-surface tracking-tighter">€2,400,000</span>
+<span class="text-5xl font-headline font-black text-on-surface tracking-tighter counter" data-target="2400000" data-prefix="€" data-format="comma">0</span>
 <span class="text-sm font-body text-on-surface-variant/70 leading-relaxed">AVE Value</span>
 </div>
-<div class="hover-detail absolute inset-0 bg-primary/95 p-10 flex flex-col justify-center text-white pointer-events-none">
+<div class="regional-breakdown absolute inset-0 bg-primary p-8 text-white opacity-0 flex flex-col justify-center">
 <p class="text-sm font-body leading-relaxed">Advertising Value Equivalency of earned media coverage and editorial mentions.</p>
 </div>
 </div>
-<div class="metric-card relative group bg-white p-10 rounded-2xl border border-gray-100 shadow-sm hover:border-primary-fixed-dim transition-all duration-300 overflow-hidden">
+<div class="metric-card card-lift relative group bg-white p-8 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 overflow-hidden cursor-default">
 <div class="flex flex-col gap-3">
 <span class="text-[10px] font-black font-label uppercase tracking-[0.2em] text-primary-container">Policy Reform</span>
-<span class="text-6xl font-headline font-black text-on-surface">6</span>
+<span class="text-6xl font-headline font-black text-on-surface counter" data-target="6">0</span>
 <span class="text-sm font-body text-on-surface-variant/70 leading-relaxed">New Strategies</span>
 </div>
-<div class="hover-detail absolute inset-0 bg-primary/95 p-10 flex flex-col justify-center text-white pointer-events-none">
+<div class="regional-breakdown absolute inset-0 bg-primary p-8 text-white opacity-0 flex flex-col justify-center">
 <p class="text-sm font-body leading-relaxed">Full-scale municipal strategies adopted using our data-driven 'Living Ledger' framework.</p>
 </div>
 </div>
-<div class="metric-card relative group bg-white p-10 rounded-2xl border border-gray-100 shadow-sm hover:border-primary-fixed-dim transition-all duration-300 overflow-hidden">
+<div class="metric-card card-lift relative group bg-white p-8 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 overflow-hidden cursor-default">
 <div class="flex flex-col gap-3">
 <span class="text-[10px] font-black font-label uppercase tracking-[0.2em] text-primary-container">Research Output</span>
-<span class="text-6xl font-headline font-black text-on-surface">6</span>
+<span class="text-6xl font-headline font-black text-on-surface counter" data-target="6">0</span>
 <span class="text-sm font-body text-on-surface-variant/70 leading-relaxed">Research Studies</span>
 </div>
-<div class="hover-detail absolute inset-0 bg-primary/95 p-10 flex flex-col justify-center text-white pointer-events-none">
+<div class="regional-breakdown absolute inset-0 bg-primary p-8 text-white opacity-0 flex flex-col justify-center">
 <p class="text-sm font-body leading-relaxed">In-depth statistical analyses regarding rental market pressures and social housing availability.</p>
 </div>
 </div>
 </div>
 <!-- Partnerships -->
 <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
-<div class="bg-surface-container-low/50 p-8 rounded-2xl flex items-center gap-6">
+<div class="fade-in-up delay-1 card-lift bg-surface-container-low/50 p-8 rounded-2xl flex items-center gap-6 cursor-default">
 <span class="material-symbols-outlined text-primary/60" style="font-size: 40px;">account_balance</span>
 <div>
-<p class="text-3xl font-headline font-black text-on-surface">12</p>
+<p class="text-3xl font-headline font-black text-on-surface counter" data-target="12">0</p>
 <p class="text-[10px] uppercase font-black tracking-[0.2em] text-outline/60">Public Admin</p>
 </div>
 </div>
-<div class="bg-surface-container-low/50 p-8 rounded-2xl flex items-center gap-6">
+<div class="fade-in-up delay-2 card-lift bg-surface-container-low/50 p-8 rounded-2xl flex items-center gap-6 cursor-default">
 <span class="material-symbols-outlined text-primary/60" style="font-size: 40px;">corporate_fare</span>
 <div>
-<p class="text-3xl font-headline font-black text-on-surface">6</p>
+<p class="text-3xl font-headline font-black text-on-surface counter" data-target="6">0</p>
 <p class="text-[10px] uppercase font-black tracking-[0.2em] text-outline/60">Private Sector</p>
 </div>
 </div>
-<div class="bg-surface-container-low/50 p-8 rounded-2xl flex items-center gap-6">
+<div class="fade-in-up delay-3 card-lift bg-surface-container-low/50 p-8 rounded-2xl flex items-center gap-6 cursor-default">
 <span class="material-symbols-outlined text-primary/60" style="font-size: 40px;">public</span>
 <div>
-<p class="text-3xl font-headline font-black text-on-surface">8</p>
+<p class="text-3xl font-headline font-black text-on-surface counter" data-target="8">0</p>
 <p class="text-[10px] uppercase font-black tracking-[0.2em] text-outline/60">Intl Orgs</p>
 </div>
 </div>
-<div class="bg-surface-container-low/50 p-8 rounded-2xl flex items-center gap-6">
+<div class="fade-in-up delay-4 card-lift bg-surface-container-low/50 p-8 rounded-2xl flex items-center gap-6 cursor-default">
 <span class="material-symbols-outlined text-primary/60" style="font-size: 40px;">groups_3</span>
 <div>
-<p class="text-3xl font-headline font-black text-on-surface">24</p>
+<p class="text-3xl font-headline font-black text-on-surface counter" data-target="24">0</p>
 <p class="text-[10px] uppercase font-black tracking-[0.2em] text-outline/60">NGOs</p>
 </div>
 </div>
@@ -302,7 +344,7 @@
 </section>
 <!-- Secondary Content -->
 <section class="grid grid-cols-1 lg:grid-cols-2 gap-32 items-start mb-32">
-<div class="space-y-16">
+<div class="space-y-16 fade-in-left">
 <div>
 <h3 class="font-headline font-extrabold text-3xl mb-8 text-primary flex items-center gap-4">
 <span class="material-symbols-outlined" data-icon="hub">hub</span>
@@ -323,8 +365,7 @@
 </div>
 </div>
 <!-- Visual Emphasis Area -->
-<div class="bg-surface-container-low/30 p-16 rounded-[2.5rem] border-l-8 border-primary relative overflow-hidden">
-<span class="material-symbols-outlined absolute -top-10 -right-10 text-[200px] opacity-[0.03] rotate-12">format_quote</span>
+<div class="fade-in-right bg-surface-container-low/30 p-16 rounded-[2.5rem] border-l-8 border-primary relative overflow-hidden">
 <blockquote class="font-headline italic text-4xl text-on-surface font-light leading-snug mb-12 relative z-10">
                     "Advocacy is not merely asking for change; it is presenting the mathematical proof that change is both necessary and achievable through structured policy."
                 </blockquote>
@@ -350,4 +391,59 @@
 </div>
 </div>
 </footer>
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.fade-in-left, .fade-in-right, .fade-in-up').forEach(el => {
+        observer.observe(el);
+    });
+
+    const counters = document.querySelectorAll('.counter');
+    const duration = 2000;
+
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const target = parseFloat(el.dataset.target);
+                const decimals = parseInt(el.dataset.decimals) || 0;
+                const prefix = el.dataset.prefix || '';
+                const suffix = el.dataset.suffix || '';
+                const useComma = el.dataset.format === 'comma';
+                const startTime = performance.now();
+
+                function update(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    let value = eased * target;
+
+                    if (decimals > 0) {
+                        value = value.toFixed(decimals);
+                    } else {
+                        value = Math.floor(value);
+                        if (useComma) value = value.toLocaleString();
+                    }
+
+                    el.textContent = prefix + value + suffix;
+
+                    if (progress < 1) {
+                        requestAnimationFrame(update);
+                    }
+                }
+
+                requestAnimationFrame(update);
+                counterObserver.unobserve(el);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    counters.forEach(counter => counterObserver.observe(counter));
+</script>
 </body></html>
