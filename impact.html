@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nadácia Dedo | Our Impact</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    "primary": "#036457",
+                    "primary-container": "#2d7d6f",
+                    "primary-fixed": "#a4f1e0",
+                    "primary-fixed-dim": "#88d5c4",
+                    "on-primary": "#ffffff",
+                    "on-primary-container": "#d5fff4",
+                    "on-primary-fixed": "#00201b",
+                    "on-primary-fixed-variant": "#005045",
+                    "secondary": "#466270",
+                    "secondary-container": "#c6e4f4",
+                    "secondary-fixed": "#c9e7f7",
+                    "secondary-fixed-dim": "#adcbda",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-container": "#4a6774",
+                    "on-secondary-fixed": "#001f2a",
+                    "on-secondary-fixed-variant": "#2e4b57",
+                    "tertiary": "#874636",
+                    "tertiary-container": "#a45e4c",
+                    "tertiary-fixed": "#ffdbd2",
+                    "tertiary-fixed-dim": "#ffb4a2",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-container": "#fff4f2",
+                    "on-tertiary-fixed": "#390b02",
+                    "on-tertiary-fixed-variant": "#713526",
+                    "background": "#f8f9fa",
+                    "on-background": "#191c1d",
+                    "surface": "#f8f9fa",
+                    "surface-dim": "#d9dadb",
+                    "surface-bright": "#f8f9fa",
+                    "surface-tint": "#126a5d",
+                    "surface-variant": "#e1e3e4",
+                    "surface-container": "#edeeef",
+                    "surface-container-low": "#f3f4f5",
+                    "surface-container-high": "#e7e8e9",
+                    "surface-container-highest": "#e1e3e4",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface": "#191c1d",
+                    "on-surface-variant": "#3f4946",
+                    "outline": "#6f7976",
+                    "outline-variant": "#bec9c5",
+                    "inverse-surface": "#2e3132",
+                    "inverse-on-surface": "#f0f1f2",
+                    "inverse-primary": "#88d5c4",
+                    "error": "#ba1a1a",
+                    "error-container": "#ffdad6",
+                    "on-error": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "peach": "#FFD4C6"
+                },
+                borderRadius: {
+                    DEFAULT: "0.125rem",
+                    lg: "0.25rem",
+                    xl: "0.5rem",
+                    full: "0.75rem"
+                },
+                fontFamily: {
+                    headline: ["Manrope"],
+                    body: ["Inter"],
+                    label: ["Inter"]
+                }
+            },
+        },
+    }
+</script>
+<style>
+    body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; color: #191c1d; margin: 0; padding: 0; min-height: 100vh; }
+    h1, h2, h3, h4 { font-family: 'Manrope', sans-serif; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    .nav-item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+    .dropdown { transition: all 0.2s ease-out; transform: translateY(8px); opacity: 0; visibility: hidden; }
+
+    .page-container {
+        width: 100%;
+        height: auto;
+        min-height: 100vh;
+        position: relative;
+        background: #f8f9fa;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Scroll margin for anchor nav */
+    .impact-section {
+        scroll-margin-top: 140px;
+    }
+
+    /* Metric card green drawer overlay */
+    .metric-card { position: relative; overflow: hidden; }
+    .metric-card:hover .regional-breakdown { opacity: 1; transform: translateY(0); }
+    .regional-breakdown {
+        transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    /* Fade-in animations */
+    .fade-in-left {
+        opacity: 0;
+        transform: translateX(-40px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .fade-in-right {
+        opacity: 0;
+        transform: translateX(40px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .fade-in-up {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+    .fade-in-left.visible,
+    .fade-in-right.visible,
+    .fade-in-up.visible {
+        opacity: 1;
+        transform: translate(0);
+    }
+
+    /* Stagger delays */
+    .delay-1 { transition-delay: 0.15s; }
+    .delay-2 { transition-delay: 0.3s; }
+    .delay-3 { transition-delay: 0.45s; }
+    .delay-4 { transition-delay: 0.6s; }
+    .delay-5 { transition-delay: 0.75s; }
+    .delay-6 { transition-delay: 0.9s; }
+
+    /* Card hover lift */
+    .card-lift {
+        transition: scale 0.3s ease-out, box-shadow 0.3s ease-out;
+    }
+    .card-lift:hover {
+        scale: 1.05;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    /* Bar grow */
+    .bar-grow {
+        transform: scaleY(0);
+        transform-origin: bottom;
+        transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .bar-grow.visible {
+        transform: scaleY(1);
+    }
+
+    /* Parallax elements */
+    .parallax-element {
+        will-change: transform;
+        transition: none;
+    }
+
+    /* Floating nav active */
+    .impact-nav-link {
+        transition: all 0.3s ease-out;
+    }
+    .impact-nav-link.active {
+        background-color: #036457;
+        color: white;
+    }
+    .impact-nav-link.active .material-symbols-outlined {
+        font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    /* Dot visualization */
+    .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        display: inline-block;
+    }
+    .dot-filled { background-color: #036457; }
+    .dot-outline { background-color: #bec9c5; }
+
+    /* Section divider */
+    .section-divider {
+        height: 1px;
+        background: linear-gradient(90deg, transparent 0%, #bec9c5 20%, #bec9c5 80%, transparent 100%);
+    }
+
+    /* Real-time pulse */
+    @keyframes pulse-dot {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.4; }
+    }
+    .pulse-indicator {
+        animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    /* Abstract decoration patterns */
+    .dot-pattern {
+        background-image: radial-gradient(#036457 1px, transparent 1px);
+        background-size: 20px 20px;
+        opacity: 0.06;
+    }
+    .dot-pattern-light {
+        background-image: radial-gradient(#036457 1px, transparent 1px);
+        background-size: 16px 16px;
+        opacity: 0.04;
+    }
+</style>
+</head>
+<body class="text-on-background font-body selection:bg-primary-fixed selection:text-on-primary-fixed min-h-screen bg-background">
+<div class="page-container bg-background">
+
+<!-- Header -->
+<header class="bg-white/80 backdrop-blur-xl z-[60] relative border-b border-outline-variant/10">
+<div class="flex justify-between items-center w-full max-w-[1440px] mx-auto px-12 h-20">
+<a href="index.html" class="text-2xl font-black text-primary font-headline no-underline">Nadácia Dedo</a>
+<nav class="hidden lg:flex items-center gap-8 ml-auto">
+    <div class="relative group nav-item">
+        <a class="text-sm font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors py-8 inline-flex items-center gap-1" href="#">
+            What we do <span class="material-symbols-outlined text-sm">expand_more</span>
+        </a>
+        <div class="dropdown absolute top-full left-0 w-48 bg-white shadow-xl border border-outline-variant/20 rounded-xl overflow-hidden py-2 z-[60]">
+            <a class="block px-4 py-3 text-sm text-on-surface-variant hover:bg-primary-container/10 hover:text-primary transition-colors" href="impact.html">Our impact</a>
+            <a class="block px-4 py-3 text-sm text-on-surface-variant hover:bg-primary-container/10 hover:text-primary transition-colors" href="#">Projects</a>
+            <a class="block px-4 py-3 text-sm text-on-surface-variant hover:bg-primary-container/10 hover:text-primary transition-colors" href="#">News</a>
+        </div>
+    </div>
+    <div class="relative group nav-item">
+        <a class="text-sm font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors py-8 inline-flex items-center gap-1" href="#">
+            About <span class="material-symbols-outlined text-sm">expand_more</span>
+        </a>
+        <div class="dropdown absolute top-full left-0 w-56 bg-white shadow-xl border border-outline-variant/20 rounded-xl overflow-hidden py-2 z-[60]">
+            <a class="block px-4 py-3 text-sm text-on-surface-variant hover:bg-primary-container/10 hover:text-primary transition-colors" href="#">About the foundation</a>
+            <a class="block px-4 py-3 text-sm text-on-surface-variant hover:bg-primary-container/10 hover:text-primary transition-colors" href="#">Management team</a>
+            <a class="block px-4 py-3 text-sm text-on-surface-variant hover:bg-primary-container/10 hover:text-primary transition-colors" href="#">Contact</a>
+        </div>
+    </div>
+    <div class="relative group nav-item">
+        <a class="text-sm font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors py-8 inline-flex items-center gap-1" href="#">
+            Impact enablers <span class="material-symbols-outlined text-sm">expand_more</span>
+        </a>
+        <div class="dropdown absolute top-full left-0 w-48 bg-white shadow-xl border border-outline-variant/20 rounded-xl overflow-hidden py-2 z-[60]">
+            <a class="block px-4 py-3 text-sm text-on-surface-variant hover:bg-primary-container/10 hover:text-primary transition-colors" href="#">Partners</a>
+            <a class="block px-4 py-3 text-sm text-on-surface-variant hover:bg-primary-container/10 hover:text-primary transition-colors" href="#">2%</a>
+        </div>
+    </div>
+    <div class="relative group nav-item">
+        <a class="text-sm font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors py-8 inline-flex items-center gap-1" href="#">
+            Contribute <span class="material-symbols-outlined text-sm">expand_more</span>
+        </a>
+        <div class="dropdown absolute top-full left-0 w-48 bg-white shadow-xl border border-outline-variant/20 rounded-xl overflow-hidden py-2 z-[60]">
+            <a class="block px-4 py-3 text-sm text-on-surface-variant hover:bg-primary-container/10 hover:text-primary transition-colors" href="#">Contribute</a>
+        </div>
+    </div>
+</nav>
+</div>
+</header>
+
+<!-- Floating Impact Nav -->
+<nav id="impact-nav" class="flex justify-center sticky top-0 z-50 py-3 bg-background/80 backdrop-blur-md mt-4">
+<div class="bg-white shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-outline-variant/20 rounded-full px-6 py-2 flex items-center gap-1 font-headline text-[11px] font-bold uppercase tracking-wider">
+    <a href="#housing" class="impact-nav-link active px-4 py-2 flex items-center gap-2 rounded-full text-on-surface-variant hover:bg-primary/5">
+        <span class="material-symbols-outlined text-lg">home</span> Housing
+    </a>
+    <div class="w-px h-5 bg-outline-variant/30 mx-0.5"></div>
+    <a href="#social-services" class="impact-nav-link px-4 py-2 flex items-center gap-2 rounded-full text-on-surface-variant hover:bg-primary/5">
+        <span class="material-symbols-outlined text-lg">diversity_3</span> Social Services
+    </a>
+    <div class="w-px h-5 bg-outline-variant/30 mx-0.5"></div>
+    <a href="#employment" class="impact-nav-link px-4 py-2 flex items-center gap-2 rounded-full text-on-surface-variant hover:bg-primary/5">
+        <span class="material-symbols-outlined text-lg">work</span> Employment
+    </a>
+    <div class="w-px h-5 bg-outline-variant/30 mx-0.5"></div>
+    <a href="#health" class="impact-nav-link px-4 py-2 flex items-center gap-2 rounded-full text-on-surface-variant hover:bg-primary/5">
+        <span class="material-symbols-outlined text-lg">medical_services</span> Health
+    </a>
+    <div class="w-px h-5 bg-outline-variant/30 mx-0.5"></div>
+    <a href="#advocacy" class="impact-nav-link px-4 py-2 flex items-center gap-2 rounded-full text-on-surface-variant hover:bg-primary/5">
+        <span class="material-symbols-outlined text-lg">campaign</span> Advocacy
+    </a>
+</div>
+</nav>
+
+<main class="flex-grow">
+<div class="max-w-[1440px] mx-auto px-12">
+
+<!-- ========================================= -->
+<!-- HERO INTRO -->
+<!-- ========================================= -->
+<section class="pt-16 pb-20 text-center relative overflow-hidden">
+    <!-- Parallax decorative elements -->
+    <div class="parallax-element absolute top-10 left-10 w-64 h-64 rounded-full bg-primary/[0.03] blur-3xl" data-speed="0.15"></div>
+    <div class="parallax-element absolute bottom-10 right-10 w-80 h-80 rounded-full bg-peach/[0.06] blur-3xl" data-speed="0.1"></div>
+    <div class="parallax-element absolute top-20 right-32 dot-pattern w-40 h-40 rounded-2xl" data-speed="0.08"></div>
+
+    <div class="fade-in-up">
+        <p class="text-xs font-bold uppercase tracking-[0.25em] text-primary mb-4 font-headline">Measuring What Matters</p>
+        <h1 class="text-5xl md:text-6xl font-extrabold text-on-surface font-headline leading-tight mb-6">
+            Our <span class="text-primary">Impact</span>
+        </h1>
+        <p class="text-lg text-on-surface-variant max-w-2xl mx-auto font-body leading-relaxed">
+            Real-time data from our five core programs working to end homelessness in Slovakia.
+        </p>
+    </div>
+</section>
+
+
+<!-- ========================================= -->
+<!-- SECTION 1: HOUSING -->
+<!-- ========================================= -->
+<section id="housing" class="impact-section pb-24 relative">
+    <!-- Parallax decoration -->
+    <div class="parallax-element absolute -right-8 top-40 dot-pattern w-48 h-48 rounded-full" data-speed="0.12"></div>
+
+    <!-- Section label -->
+    <div class="fade-in-left flex items-center gap-3 mb-10">
+        <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
+            <span class="material-symbols-outlined text-primary text-2xl">home</span>
+        </div>
+        <div>
+            <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-outline font-headline">Impact Area 01</p>
+            <h2 class="text-3xl font-extrabold text-on-surface font-headline">Housing First</h2>
+        </div>
+    </div>
+
+    <!-- Metric cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        <!-- Apartments -->
+        <div class="metric-card card-lift bg-white rounded-2xl shadow-sm border border-outline-variant/10 p-8 fade-in-up delay-1 relative overflow-hidden">
+            <div class="flex items-start justify-between mb-1">
+                <span class="material-symbols-outlined text-primary/40 text-3xl">apartment</span>
+                <span class="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600 bg-emerald-50 rounded-full px-2.5 py-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 pulse-indicator"></span>
+                    +3 this month
+                </span>
+            </div>
+            <div class="text-4xl font-extrabold text-on-surface font-headline mt-3 counter" data-target="40" data-format="comma">0</div>
+            <p class="text-sm text-on-surface-variant mt-1 font-medium">Apartments Secured</p>
+            <!-- Green drawer overlay -->
+            <div class="regional-breakdown absolute inset-0 bg-primary rounded-2xl p-8 flex flex-col justify-center text-white">
+                <p class="text-xs uppercase tracking-widest font-bold opacity-70 mb-3">Regional Breakdown</p>
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-sm font-medium">Kosice</span>
+                    <span class="text-2xl font-extrabold font-headline">28</span>
+                </div>
+                <div class="w-full h-px bg-white/20 my-1"></div>
+                <div class="flex justify-between items-center">
+                    <span class="text-sm font-medium">Presov</span>
+                    <span class="text-2xl font-extrabold font-headline">12</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Clients -->
+        <div class="metric-card card-lift bg-white rounded-2xl shadow-sm border border-outline-variant/10 p-8 fade-in-up delay-2 relative overflow-hidden">
+            <div class="flex items-start justify-between mb-1">
+                <span class="material-symbols-outlined text-primary/40 text-3xl">groups</span>
+                <span class="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600 bg-emerald-50 rounded-full px-2.5 py-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 pulse-indicator"></span>
+                    +12 today
+                </span>
+            </div>
+            <div class="text-4xl font-extrabold text-on-surface font-headline mt-3 counter" data-target="135" data-format="comma">0</div>
+            <p class="text-sm text-on-surface-variant mt-1 font-medium">Clients Housed</p>
+            <div class="regional-breakdown absolute inset-0 bg-primary rounded-2xl p-8 flex flex-col justify-center text-white">
+                <p class="text-xs uppercase tracking-widest font-bold opacity-70 mb-3">Regional Breakdown</p>
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-sm font-medium">Kosice</span>
+                    <span class="text-2xl font-extrabold font-headline">89</span>
+                </div>
+                <div class="w-full h-px bg-white/20 my-1"></div>
+                <div class="flex justify-between items-center">
+                    <span class="text-sm font-medium">Presov</span>
+                    <span class="text-2xl font-extrabold font-headline">46</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nights -->
+        <div class="metric-card card-lift bg-white rounded-2xl shadow-sm border border-outline-variant/10 p-8 fade-in-up delay-3 relative overflow-hidden">
+            <div class="flex items-start justify-between mb-1">
+                <span class="material-symbols-outlined text-primary/40 text-3xl">bedtime</span>
+                <span class="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600 bg-emerald-50 rounded-full px-2.5 py-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 pulse-indicator"></span>
+                    +122 tonight
+                </span>
+            </div>
+            <div class="text-4xl font-extrabold text-on-surface font-headline mt-3 counter" data-target="193038" data-format="comma">0</div>
+            <p class="text-sm text-on-surface-variant mt-1 font-medium">Nights at Home</p>
+            <div class="regional-breakdown absolute inset-0 bg-primary rounded-2xl p-8 flex flex-col justify-center text-white">
+                <p class="text-xs uppercase tracking-widest font-bold opacity-70 mb-3">Regional Breakdown</p>
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-sm font-medium">Kosice</span>
+                    <span class="text-2xl font-extrabold font-headline">128,204</span>
+                </div>
+                <div class="w-full h-px bg-white/20 my-1"></div>
+                <div class="flex justify-between items-center">
+                    <span class="text-sm font-medium">Presov</span>
+                    <span class="text-2xl font-extrabold font-headline">64,834</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scrollytelling: Dot Visualization -->
+    <div class="fade-in-up mb-16">
+        <div class="bg-white rounded-2xl shadow-sm border border-outline-variant/10 p-10">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 mb-6">
+                <div>
+                    <h3 class="text-xl font-bold font-headline text-on-surface mb-1">The Gap We Bridge</h3>
+                    <p class="text-sm text-on-surface-variant">135 families housed vs 2,000+ families still in need across eastern Slovakia</p>
+                </div>
+                <div class="flex items-center gap-4 sm:ml-auto text-xs font-medium text-on-surface-variant">
+                    <span class="flex items-center gap-1.5"><span class="dot dot-filled"></span> Housed</span>
+                    <span class="flex items-center gap-1.5"><span class="dot dot-outline"></span> In need</span>
+                </div>
+            </div>
+            <div id="dot-viz" class="flex flex-wrap gap-[3px] leading-none"></div>
+        </div>
+    </div>
+
+    <!-- Housing First brief + Collaborative Engine -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+        <div class="fade-in-left">
+            <h3 class="text-xl font-bold font-headline text-on-surface mb-3">Housing First Model</h3>
+            <p class="text-sm text-on-surface-variant leading-relaxed mb-4">
+                Stable housing is the foundation, not the reward. We provide apartments first, then wrap around with social, health, and employment support. Evidence shows this approach maintains 94% housing retention.
+            </p>
+            <div class="flex items-center gap-2 text-xs font-semibold text-primary">
+                <span class="material-symbols-outlined text-base">trending_up</span>
+                94% housing retention rate
+            </div>
+        </div>
+        <div>
+            <h3 class="text-xl font-bold font-headline text-on-surface mb-4 fade-in-right">Collaborative Engine</h3>
+            <div class="grid grid-cols-2 gap-3">
+                <div class="card-lift bg-white rounded-xl shadow-sm border border-outline-variant/10 p-5 fade-in-up delay-1 text-center">
+                    <span class="material-symbols-outlined text-primary text-2xl mb-2">social_distance</span>
+                    <p class="text-sm font-semibold text-on-surface">Social Worker</p>
+                </div>
+                <div class="card-lift bg-white rounded-xl shadow-sm border border-outline-variant/10 p-5 fade-in-up delay-2 text-center">
+                    <span class="material-symbols-outlined text-primary text-2xl mb-2">health_and_safety</span>
+                    <p class="text-sm font-semibold text-on-surface">Health Worker</p>
+                </div>
+                <div class="card-lift bg-white rounded-xl shadow-sm border border-outline-variant/10 p-5 fade-in-up delay-3 text-center">
+                    <span class="material-symbols-outlined text-primary text-2xl mb-2">psychology</span>
+                    <p class="text-sm font-semibold text-on-surface">Psychologist</p>
+                </div>
+                <div class="card-lift bg-white rounded-xl shadow-sm border border-outline-variant/10 p-5 fade-in-up delay-4 text-center">
+                    <span class="material-symbols-outlined text-primary text-2xl mb-2">gavel</span>
+                    <p class="text-sm font-semibold text-on-surface">Lawyer</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Divider -->
+<div class="section-divider my-4"></div>
+
+<!-- ========================================= -->
+<!-- SECTION 2: SOCIAL SERVICES -->
+<!-- ========================================= -->
+<section id="social-services" class="impact-section py-24 relative">
+    <div class="parallax-element absolute -left-6 top-32 dot-pattern-light w-56 h-56 rounded-full" data-speed="0.1"></div>
+
+    <div class="fade-in-right flex items-center gap-3 mb-10">
+        <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
+            <span class="material-symbols-outlined text-primary text-2xl">diversity_3</span>
+        </div>
+        <div>
+            <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-outline font-headline">Impact Area 02</p>
+            <h2 class="text-3xl font-extrabold text-on-surface font-headline">Social Services</h2>
+        </div>
+    </div>
+
+    <!-- Metric cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div class="metric-card card-lift bg-white rounded-2xl shadow-sm border border-outline-variant/10 p-7 fade-in-up delay-1 relative overflow-hidden">
+            <div class="flex items-start justify-between mb-1">
+                <span class="material-symbols-outlined text-primary/40 text-2xl">record_voice_over</span>
+                <span class="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600 bg-emerald-50 rounded-full px-2.5 py-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 pulse-indicator"></span>
+                    +48 this week
+                </span>
+            </div>
+            <div class="text-3xl font-extrabold text-on-surface font-headline mt-3 counter" data-target="38141" data-format="comma">0</div>
+            <p class="text-xs text-on-surface-variant mt-1 font-medium">Counseling Hours</p>
+            <div class="regional-breakdown absolute inset-0 bg-primary rounded-2xl p-6 flex flex-col justify-center text-white">
+                <p class="text-[10px] uppercase tracking-widest font-bold opacity-70 mb-2">Breakdown</p>
+                <div class="flex justify-between items-center mb-1"><span class="text-xs">Kosice</span><span class="text-lg font-extrabold font-headline">24,820</span></div>
+                <div class="w-full h-px bg-white/20 my-1"></div>
+                <div class="flex justify-between items-center"><span class="text-xs">Presov</span><span class="text-lg font-extrabold font-headline">13,321</span></div>
+            </div>
+        </div>
+
+        <div class="metric-card card-lift bg-white rounded-2xl shadow-sm border border-outline-variant/10 p-7 fade-in-up delay-2 relative overflow-hidden">
+            <div class="flex items-start justify-between mb-1">
+                <span class="material-symbols-outlined text-primary/40 text-2xl">family_restroom</span>
+                <span class="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600 bg-emerald-50 rounded-full px-2.5 py-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 pulse-indicator"></span>
+                    +5 this month
+                </span>
+            </div>
+            <div class="text-3xl font-extrabold text-on-surface font-headline mt-3 counter" data-target="380" data-format="comma">0</div>
+            <p class="text-xs text-on-surface-variant mt-1 font-medium">Families Supported</p>
+            <div class="regional-breakdown absolute inset-0 bg-primary rounded-2xl p-6 flex flex-col justify-center text-white">
+                <p class="text-[10px] uppercase tracking-widest font-bold opacity-70 mb-2">Breakdown</p>
+                <div class="flex justify-between items-center mb-1"><span class="text-xs">Kosice</span><span class="text-lg font-extrabold font-headline">248</span></div>
+                <div class="w-full h-px bg-white/20 my-1"></div>
+                <div class="flex justify-between items-center"><span class="text-xs">Presov</span><span class="text-lg font-extrabold font-headline">132</span></div>
+            </div>
+        </div>
+
+        <div class="metric-card card-lift bg-white rounded-2xl shadow-sm border border-outline-variant/10 p-7 fade-in-up delay-3 relative overflow-hidden">
+            <span class="material-symbols-outlined text-primary/40 text-2xl mb-1">child_care</span>
+            <div class="text-3xl font-extrabold text-on-surface font-headline mt-3 counter" data-target="83">0</div>
+            <p class="text-xs text-on-surface-variant mt-1 font-medium">Children Supported</p>
+            <div class="regional-breakdown absolute inset-0 bg-primary rounded-2xl p-6 flex flex-col justify-center text-white">
+                <p class="text-[10px] uppercase tracking-widest font-bold opacity-70 mb-2">Breakdown</p>
+                <div class="flex justify-between items-center mb-1"><span class="text-xs">Kosice</span><span class="text-lg font-extrabold font-headline">54</span></div>
+                <div class="w-full h-px bg-white/20 my-1"></div>
+                <div class="flex justify-between items-center"><span class="text-xs">Presov</span><span class="text-lg font-extrabold font-headline">29</span></div>
+            </div>
+        </div>
+
+        <div class="metric-card card-lift bg-white rounded-2xl shadow-sm border border-outline-variant/10 p-7 fade-in-up delay-4 relative overflow-hidden">
+            <span class="material-symbols-outlined text-primary/40 text-2xl mb-1">verified</span>
+            <div class="text-3xl font-extrabold text-on-surface font-headline mt-3"><span class="counter" data-target="94">0</span>%</div>
+            <p class="text-xs text-on-surface-variant mt-1 font-medium">Housing Retained</p>
+            <div class="regional-breakdown absolute inset-0 bg-primary rounded-2xl p-6 flex flex-col justify-center text-white">
+                <p class="text-[10px] uppercase tracking-widest font-bold opacity-70 mb-2">Retention Rate</p>
+                <div class="flex justify-between items-center mb-1"><span class="text-xs">Kosice</span><span class="text-lg font-extrabold font-headline">95%</span></div>
+                <div class="w-full h-px bg-white/20 my-1"></div>
+                <div class="flex justify-between items-center"><span class="text-xs">Presov</span><span class="text-lg font-extrabold font-headline">92%</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bar Chart: Progress Distribution -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+        <div class="fade-in-left">
+            <h3 class="text-xl font-bold font-headline text-on-surface mb-6">Progress Distribution</h3>
+            <div class="bg-white rounded-2xl shadow-sm border border-outline-variant/10 p-8">
+                <div class="flex items-center gap-4 mb-6 text-xs font-medium text-on-surface-variant">
+                    <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-primary"></span> Kosice</span>
+                    <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-peach"></span> Presov</span>
+                </div>
+                <div class="flex items-end justify-between gap-4 h-48">
+                    <div class="flex-1 flex flex-col items-center gap-1">
+                        <div class="flex items-end gap-1 w-full h-40">
+                            <div class="flex-1 bg-primary rounded-t bar-grow" style="height: 65%;" data-bar></div>
+                            <div class="flex-1 bg-peach rounded-t bar-grow" style="height: 40%;" data-bar></div>
+                        </div>
+                        <span class="text-[10px] text-outline font-medium">Jan</span>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center gap-1">
+                        <div class="flex items-end gap-1 w-full h-40">
+                            <div class="flex-1 bg-primary rounded-t bar-grow" style="height: 72%;" data-bar></div>
+                            <div class="flex-1 bg-peach rounded-t bar-grow" style="height: 48%;" data-bar></div>
+                        </div>
+                        <span class="text-[10px] text-outline font-medium">Feb</span>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center gap-1">
+                        <div class="flex items-end gap-1 w-full h-40">
+                            <div class="flex-1 bg-primary rounded-t bar-grow" style="height: 80%;" data-bar></div>
+                            <div class="flex-1 bg-peach rounded-t bar-grow" style="height: 55%;" data-bar></div>
+                        </div>
+                        <span class="text-[10px] text-outline font-medium">Mar</span>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center gap-1">
+                        <div class="flex items-end gap-1 w-full h-40">
+                            <div class="flex-1 bg-primary rounded-t bar-grow" style="height: 85%;" data-bar></div>
+                            <div class="flex-1 bg-peach rounded-t bar-grow" style="height: 60%;" data-bar></div>
+                        </div>
+                        <span class="text-[10px] text-outline font-medium">Apr</span>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center gap-1">
+                        <div class="flex items-end gap-1 w-full h-40">
+                            <div class="flex-1 bg-primary rounded-t bar-grow" style="height: 90%;" data-bar></div>
+                            <div class="flex-1 bg-peach rounded-t bar-grow" style="height: 68%;" data-bar></div>
+                        </div>
+                        <span class="text-[10px] text-outline font-medium">May</span>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center gap-1">
+                        <div class="flex items-end gap-1 w-full h-40">
+                            <div class="flex-1 bg-primary rounded-t bar-grow" style="height: 95%;" data-bar></div>
+                            <div class="flex-1 bg-peach rounded-t bar-grow" style="height: 75%;" data-bar></div>
+                        </div>
+                        <span class="text-[10px] text-outline font-medium">Jun</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="fade-in-right flex flex-col justify-center">
+            <h3 class="text-xl font-bold font-headline text-on-surface mb-3">Integrated Methodology</h3>
+            <p class="text-sm text-on-surface-variant leading-relaxed mb-4">
+                Our social services combine intensive case management with community-based support. Each family receives a tailored plan addressing financial literacy, parenting, education, and social integration.
+            </p>
+            <div class="flex items-center gap-2 text-xs font-semibold text-primary">
+                <span class="material-symbols-outlined text-base">schedule</span>
+                Average 100+ counseling hours per family annually
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Divider -->
+<div class="section-divider my-4"></div>
+
+<!-- ========================================= -->
+<!-- SECTION 3: EMPLOYMENT -->
+<!-- ========================================= -->
+<section id="employment" class="impact-section py-24 relative">
+    <div class="parallax-element absolute right-0 top-20 dot-pattern w-44 h-44 rounded-2xl" data-speed="0.09"></div>
+
+    <div class="fade-in-left flex items-center gap-3 mb-10">
+        <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
+            <span class="material-symbols-outlined text-primary text-2xl">work</span>
+        </div>
+        <div>
+            <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-outline font-headline">Impact Area 03</p>
+            <h2 class="text-3xl font-extrabold text-on-surface font-headline">Employment</h2>
+        </div>
+    </div>
+
+    <!-- Metric cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        <div class="metric-card card-lift bg-white rounded-2xl shadow-sm border border-outline-variant/10 p-8 fade-in-up delay-1 relative overflow-hidden">
+            <div class="flex items-start justify-between mb-1">
+                <span class="material-symbols-outlined text-primary/40 text-3xl">shopping_bag</span>
+                <span class="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600 bg-emerald-50 rounded-full px-2.5 py-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 pulse-indicator"></span>
+                    +2 this quarter
+                </span>
+            </div>
+            <div class="text-4xl font-extrabold text-on-surface font-headline mt-3 counter" data-target="13">0</div>
+            <p class="text-sm text-on-surface-variant mt-1 font-medium">Dorka Bags Employees</p>
+            <div class="regional-breakdown absolute inset-0 bg-primary rounded-2xl p-8 flex flex-col justify-center text-white">
+                <p class="text-xs uppercase tracking-widest font-bold opacity-70 mb-3">Dorka Workshop</p>
+                <p class="text-sm opacity-90">Social enterprise providing dignified employment through handcrafted bag production</p>
+            </div>
+        </div>
+
+        <div class="metric-card card-lift bg-white rounded-2xl shadow-sm border border-outline-variant/10 p-8 fade-in-up delay-2 relative overflow-hidden">
+            <div class="flex items-start justify-between mb-1">
+                <span class="material-symbols-outlined text-primary/40 text-3xl">handshake</span>
+                <span class="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600 bg-emerald-50 rounded-full px-2.5 py-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 pulse-indicator"></span>
+                    +4 this year
+                </span>
+            </div>
+            <div class="text-4xl font-extrabold text-on-surface font-headline mt-3 counter" data-target="21">0</div>
+            <p class="text-sm text-on-surface-variant mt-1 font-medium">Job Placements</p>
+            <div class="regional-breakdown absolute inset-0 bg-primary rounded-2xl p-8 flex flex-col justify-center text-white">
+                <p class="text-xs uppercase tracking-widest font-bold opacity-70 mb-3">Placement Type</p>
+                <div class="flex justify-between items-center mb-2"><span class="text-sm">Open market</span><span class="text-2xl font-extrabold font-headline">14</span></div>
+                <div class="w-full h-px bg-white/20 my-1"></div>
+                <div class="flex justify-between items-center"><span class="text-sm">Internal</span><span class="text-2xl font-extrabold font-headline">7</span></div>
+            </div>
+        </div>
+
+        <div class="metric-card card-lift bg-white rounded-2xl shadow-sm border border-outline-variant/10 p-8 fade-in-up delay-3 relative overflow-hidden">
+            <div class="flex items-start justify-between mb-1">
+                <span class="material-symbols-outlined text-primary/40 text-3xl">corporate_fare</span>
+                <span class="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600 bg-emerald-50 rounded-full px-2.5 py-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 pulse-indicator"></span>
+                    +3 this year
+                </span>
+            </div>
+            <div class="text-4xl font-extrabold text-on-surface font-headline mt-3 counter" data-target="18">0</div>
+            <p class="text-sm text-on-surface-variant mt-1 font-medium">Partner Employers</p>
+            <div class="regional-breakdown absolute inset-0 bg-primary rounded-2xl p-8 flex flex-col justify-center text-white">
+                <p class="text-xs uppercase tracking-widest font-bold opacity-70 mb-3">Partners</p>
+                <p class="text-sm opacity-90">Local businesses committed to inclusive hiring practices</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Retention bars + Dual Pillar -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-16">
+        <div class="fade-in-left">
+            <h3 class="text-xl font-bold font-headline text-on-surface mb-6">Retention Rates</h3>
+            <div class="bg-white rounded-2xl shadow-sm border border-outline-variant/10 p-8 space-y-6">
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm font-medium text-on-surface">Open Market</span>
+                        <span class="text-sm font-bold text-primary">78%</span>
+                    </div>
+                    <div class="h-3 bg-surface-container-high rounded-full overflow-hidden">
+                        <div class="h-full bg-primary rounded-full bar-grow" style="width: 78%;" data-bar></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm font-medium text-on-surface">Internal (Dorka)</span>
+                        <span class="text-sm font-bold text-primary">92%</span>
+                    </div>
+                    <div class="h-3 bg-surface-container-high rounded-full overflow-hidden">
+                        <div class="h-full bg-primary-container rounded-full bar-grow" style="width: 92%;" data-bar></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="fade-in-right flex flex-col justify-center">
+            <h3 class="text-xl font-bold font-headline text-on-surface mb-3">Dual Pillar Framework</h3>
+            <p class="text-sm text-on-surface-variant leading-relaxed mb-4">
+                <strong class="text-on-surface">Pillar 1 -- Dorka Workshop:</strong> Internal social enterprise offering skills training and stable income.
+            </p>
+            <p class="text-sm text-on-surface-variant leading-relaxed">
+                <strong class="text-on-surface">Pillar 2 -- Open Market:</strong> Supported transition into mainstream employment with partner businesses.
+            </p>
+        </div>
+    </div>
+
+    <!-- Growth bar chart -->
+    <div class="fade-in-up">
+        <h3 class="text-xl font-bold font-headline text-on-surface mb-6">Employment Growth</h3>
+        <div class="bg-white rounded-2xl shadow-sm border border-outline-variant/10 p-8">
+            <div class="flex items-center gap-4 mb-6 text-xs font-medium text-on-surface-variant">
+                <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-primary"></span> Placements</span>
+                <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-peach"></span> Retained</span>
+            </div>
+            <div class="flex items-end justify-between gap-6 h-40">
+                <div class="flex-1 flex flex-col items-center gap-1">
+                    <div class="flex items-end gap-1 w-full h-32">
+                        <div class="flex-1 bg-primary rounded-t bar-grow" style="height: 30%;" data-bar></div>
+                        <div class="flex-1 bg-peach rounded-t bar-grow" style="height: 25%;" data-bar></div>
+                    </div>
+                    <span class="text-[10px] text-outline font-medium">2021</span>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1">
+                    <div class="flex items-end gap-1 w-full h-32">
+                        <div class="flex-1 bg-primary rounded-t bar-grow" style="height: 50%;" data-bar></div>
+                        <div class="flex-1 bg-peach rounded-t bar-grow" style="height: 42%;" data-bar></div>
+                    </div>
+                    <span class="text-[10px] text-outline font-medium">2022</span>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1">
+                    <div class="flex items-end gap-1 w-full h-32">
+                        <div class="flex-1 bg-primary rounded-t bar-grow" style="height: 75%;" data-bar></div>
+                        <div class="flex-1 bg-peach rounded-t bar-grow" style="height: 65%;" data-bar></div>
+                    </div>
+                    <span class="text-[10px] text-outline font-medium">2023</span>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1">
+                    <div class="flex items-end gap-1 w-full h-32">
+                        <div class="flex-1 bg-primary rounded-t bar-grow" style="height: 95%;" data-bar></div>
+                        <div class="flex-1 bg-peach rounded-t bar-grow" style="height: 82%;" data-bar></div>
+                    </div>
+                    <span class="text-[10px] text-outline font-medium">2024</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Divider -->
+<div class="section-divider my-4"></div>
+
+<!-- ========================================= -->
+<!-- SECTION 4: HEALTH -->
+<!-- ========================================= -->
+<section id="health" class="impact-section py-24 relative">
+    <div class="parallax-element absolute -left-4 top-48 w-72 h-72 rounded-full bg-primary/[0.02] blur-3xl" data-speed="0.14"></div>
+
+    <div class="fade-in-right flex items-center gap-3 mb-10">
+        <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
+            <span class="material-symbols-outlined text-primary text-2xl">medical_services</span>
+        </div>
+        <div>
+            <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-outline font-headline">Impact Area 04</p>
+            <h2 class="text-3xl font-extrabold text-on-surface font-headline">Health</h2>
+        </div>
+    </div>
+
+    <!-- Metric cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16 max-w-2xl">
+        <div class="metric-card card-lift bg-white rounded-2xl shadow-sm border border-outline-variant/10 p-8 fade-in-up delay-1 relative overflow-hidden">
+            <div class="flex items-start justify-between mb-1">
+                <span class="material-symbols-outlined text-primary/40 text-3xl">vaccines</span>
+                <span class="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600 bg-emerald-50 rounded-full px-2.5 py-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 pulse-indicator"></span>
+                    +8 this week
+                </span>
+            </div>
+            <div class="text-4xl font-extrabold text-on-surface font-headline mt-3 counter" data-target="180" data-format="comma">0</div>
+            <p class="text-sm text-on-surface-variant mt-1 font-medium">Medical Treatments</p>
+            <div class="regional-breakdown absolute inset-0 bg-primary rounded-2xl p-8 flex flex-col justify-center text-white">
+                <p class="text-xs uppercase tracking-widest font-bold opacity-70 mb-3">Treatment Types</p>
+                <div class="flex justify-between items-center mb-2"><span class="text-sm">Primary care</span><span class="text-xl font-extrabold font-headline">98</span></div>
+                <div class="w-full h-px bg-white/20 my-1"></div>
+                <div class="flex justify-between items-center mb-2"><span class="text-sm">Mental health</span><span class="text-xl font-extrabold font-headline">52</span></div>
+                <div class="w-full h-px bg-white/20 my-1"></div>
+                <div class="flex justify-between items-center"><span class="text-sm">Specialist</span><span class="text-xl font-extrabold font-headline">30</span></div>
+            </div>
+        </div>
+
+        <div class="metric-card card-lift bg-white rounded-2xl shadow-sm border border-outline-variant/10 p-8 fade-in-up delay-2 relative overflow-hidden">
+            <span class="material-symbols-outlined text-primary/40 text-3xl mb-1">local_hospital</span>
+            <div class="text-4xl font-extrabold text-on-surface font-headline mt-3 counter" data-target="1">0</div>
+            <p class="text-sm text-on-surface-variant mt-1 font-medium">Low-Threshold Clinic</p>
+            <div class="regional-breakdown absolute inset-0 bg-primary rounded-2xl p-8 flex flex-col justify-center text-white">
+                <p class="text-xs uppercase tracking-widest font-bold opacity-70 mb-3">Location</p>
+                <p class="text-sm opacity-90">Kosice -- providing barrier-free healthcare access to those experiencing homelessness</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Multidisciplinary cards -->
+    <div class="mb-12">
+        <h3 class="text-xl font-bold font-headline text-on-surface mb-6 fade-in-up">Integrated Health Services</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="card-lift bg-white rounded-xl shadow-sm border border-outline-variant/10 p-6 fade-in-up delay-1">
+                <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-3">
+                    <span class="material-symbols-outlined text-primary">psychology</span>
+                </div>
+                <h4 class="text-sm font-bold text-on-surface mb-1">Mental Support</h4>
+                <p class="text-xs text-on-surface-variant leading-relaxed">Trauma-informed psychological and psychiatric care</p>
+            </div>
+            <div class="card-lift bg-white rounded-xl shadow-sm border border-outline-variant/10 p-6 fade-in-up delay-2">
+                <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-3">
+                    <span class="material-symbols-outlined text-primary">directions_walk</span>
+                </div>
+                <h4 class="text-sm font-bold text-on-surface mb-1">Field Teams</h4>
+                <p class="text-xs text-on-surface-variant leading-relaxed">Outreach nurses meeting people where they are</p>
+            </div>
+            <div class="card-lift bg-white rounded-xl shadow-sm border border-outline-variant/10 p-6 fade-in-up delay-3">
+                <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-3">
+                    <span class="material-symbols-outlined text-primary">money_off</span>
+                </div>
+                <h4 class="text-sm font-bold text-on-surface mb-1">Fee Removal</h4>
+                <p class="text-xs text-on-surface-variant leading-relaxed">Eliminating financial barriers to medical access</p>
+            </div>
+            <div class="card-lift bg-white rounded-xl shadow-sm border border-outline-variant/10 p-6 fade-in-up delay-4">
+                <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-3">
+                    <span class="material-symbols-outlined text-primary">assistant_navigation</span>
+                </div>
+                <h4 class="text-sm font-bold text-on-surface mb-1">Patient Navigation</h4>
+                <p class="text-xs text-on-surface-variant leading-relaxed">Guiding clients through the healthcare system</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="fade-in-up max-w-2xl">
+        <p class="text-sm text-on-surface-variant leading-relaxed">
+            Health is inseparable from housing stability. Our integrated model co-locates health workers within the Housing First team, ensuring continuous care from street outreach through sustained independent living.
+        </p>
+    </div>
+</section>
+
+<!-- Section Divider -->
+<div class="section-divider my-4"></div>
+
+<!-- ========================================= -->
+<!-- SECTION 5: ADVOCACY -->
+<!-- ========================================= -->
+<section id="advocacy" class="impact-section py-24 relative">
+    <div class="parallax-element absolute right-4 top-36 dot-pattern-light w-52 h-52 rounded-full" data-speed="0.11"></div>
+
+    <div class="fade-in-left flex items-center gap-3 mb-10">
+        <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
+            <span class="material-symbols-outlined text-primary text-2xl">campaign</span>
+        </div>
+        <div>
+            <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-outline font-headline">Impact Area 05</p>
+            <h2 class="text-3xl font-extrabold text-on-surface font-headline">Advocacy</h2>
+        </div>
+    </div>
+
+    <!-- Metric cards - row 1 -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-5">
+        <div class="metric-card card-lift bg-white rounded-2xl shadow-sm border border-outline-variant/10 p-6 fade-in-up delay-1 relative overflow-hidden">
+            <div class="flex items-start justify-between mb-1">
+                <span class="material-symbols-outlined text-primary/40 text-2xl">policy</span>
+                <span class="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600 bg-emerald-50 rounded-full px-2 py-0.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 pulse-indicator"></span>
+                    +6 this year
+                </span>
+            </div>
+            <div class="text-3xl font-extrabold text-on-surface font-headline mt-2 counter" data-target="111">0</div>
+            <p class="text-xs text-on-surface-variant mt-1 font-medium">Policy Involvements</p>
+            <div class="regional-breakdown absolute inset-0 bg-primary rounded-2xl p-6 flex flex-col justify-center text-white">
+                <p class="text-[10px] uppercase tracking-widest font-bold opacity-70 mb-2">Scope</p>
+                <p class="text-sm opacity-90">National and EU-level policy consultations on homelessness strategies</p>
+            </div>
+        </div>
+
+        <div class="metric-card card-lift bg-white rounded-2xl shadow-sm border border-outline-variant/10 p-6 fade-in-up delay-2 relative overflow-hidden">
+            <span class="material-symbols-outlined text-primary/40 text-2xl mb-1">groups</span>
+            <div class="text-3xl font-extrabold text-on-surface font-headline mt-2 counter" data-target="12">0</div>
+            <p class="text-xs text-on-surface-variant mt-1 font-medium">Working Groups</p>
+            <div class="regional-breakdown absolute inset-0 bg-primary rounded-2xl p-6 flex flex-col justify-center text-white">
+                <p class="text-[10px] uppercase tracking-widest font-bold opacity-70 mb-2">Active In</p>
+                <p class="text-sm opacity-90">Cross-sector working groups at municipal, regional, and national levels</p>
+            </div>
+        </div>
+
+        <div class="metric-card card-lift bg-white rounded-2xl shadow-sm border border-outline-variant/10 p-6 fade-in-up delay-3 relative overflow-hidden">
+            <div class="flex items-start justify-between mb-1">
+                <span class="material-symbols-outlined text-primary/40 text-2xl">article</span>
+                <span class="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600 bg-emerald-50 rounded-full px-2 py-0.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 pulse-indicator"></span>
+                    +18 this month
+                </span>
+            </div>
+            <div class="text-3xl font-extrabold text-on-surface font-headline mt-2 counter" data-target="1220" data-format="comma">0</div>
+            <p class="text-xs text-on-surface-variant mt-1 font-medium">Articles Published</p>
+            <div class="regional-breakdown absolute inset-0 bg-primary rounded-2xl p-6 flex flex-col justify-center text-white">
+                <p class="text-[10px] uppercase tracking-widest font-bold opacity-70 mb-2">Media</p>
+                <p class="text-sm opacity-90">Print, digital, and broadcast coverage shaping public opinion</p>
+            </div>
+        </div>
+
+        <div class="metric-card card-lift bg-white rounded-2xl shadow-sm border border-outline-variant/10 p-6 fade-in-up delay-4 relative overflow-hidden">
+            <span class="material-symbols-outlined text-primary/40 text-2xl mb-1">school</span>
+            <div class="text-3xl font-extrabold text-on-surface font-headline mt-2 counter" data-target="61">0</div>
+            <p class="text-xs text-on-surface-variant mt-1 font-medium">Seminars Delivered</p>
+            <div class="regional-breakdown absolute inset-0 bg-primary rounded-2xl p-6 flex flex-col justify-center text-white">
+                <p class="text-[10px] uppercase tracking-widest font-bold opacity-70 mb-2">Topics</p>
+                <p class="text-sm opacity-90">Housing First methodology, policy reform, social inclusion</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Metric cards - row 2 -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
+        <div class="metric-card card-lift bg-white rounded-2xl shadow-sm border border-outline-variant/10 p-6 fade-in-up delay-1 relative overflow-hidden">
+            <span class="material-symbols-outlined text-primary/40 text-2xl mb-1">tv</span>
+            <div class="text-3xl font-extrabold text-on-surface font-headline mt-2 counter" data-target="1308" data-format="comma">0</div>
+            <p class="text-xs text-on-surface-variant mt-1 font-medium">Media Impact GRP</p>
+            <div class="regional-breakdown absolute inset-0 bg-primary rounded-2xl p-6 flex flex-col justify-center text-white">
+                <p class="text-[10px] uppercase tracking-widest font-bold opacity-70 mb-2">Reach</p>
+                <p class="text-sm opacity-90">Gross Rating Points measuring broadcast audience reach</p>
+            </div>
+        </div>
+
+        <div class="metric-card card-lift bg-white rounded-2xl shadow-sm border border-outline-variant/10 p-6 fade-in-up delay-2 relative overflow-hidden">
+            <span class="material-symbols-outlined text-primary/40 text-2xl mb-1">euro</span>
+            <div class="text-3xl font-extrabold text-on-surface font-headline mt-2"><span class="text-lg">&#8364;</span><span class="counter" data-target="2.4" data-decimals="1">0</span>M</div>
+            <p class="text-xs text-on-surface-variant mt-1 font-medium">Advertising Value Equiv.</p>
+            <div class="regional-breakdown absolute inset-0 bg-primary rounded-2xl p-6 flex flex-col justify-center text-white">
+                <p class="text-[10px] uppercase tracking-widest font-bold opacity-70 mb-2">AVE</p>
+                <p class="text-sm opacity-90">Value of earned media coverage if purchased as advertising</p>
+            </div>
+        </div>
+
+        <div class="metric-card card-lift bg-white rounded-2xl shadow-sm border border-outline-variant/10 p-6 fade-in-up delay-3 relative overflow-hidden">
+            <span class="material-symbols-outlined text-primary/40 text-2xl mb-1">description</span>
+            <div class="text-3xl font-extrabold text-on-surface font-headline mt-2 counter" data-target="6">0</div>
+            <p class="text-xs text-on-surface-variant mt-1 font-medium">Strategies Authored</p>
+            <div class="regional-breakdown absolute inset-0 bg-primary rounded-2xl p-6 flex flex-col justify-center text-white">
+                <p class="text-[10px] uppercase tracking-widest font-bold opacity-70 mb-2">Strategies</p>
+                <p class="text-sm opacity-90">Municipal and regional homelessness prevention strategies</p>
+            </div>
+        </div>
+
+        <div class="metric-card card-lift bg-white rounded-2xl shadow-sm border border-outline-variant/10 p-6 fade-in-up delay-4 relative overflow-hidden">
+            <span class="material-symbols-outlined text-primary/40 text-2xl mb-1">science</span>
+            <div class="text-3xl font-extrabold text-on-surface font-headline mt-2 counter" data-target="6">0</div>
+            <p class="text-xs text-on-surface-variant mt-1 font-medium">Research Studies</p>
+            <div class="regional-breakdown absolute inset-0 bg-primary rounded-2xl p-6 flex flex-col justify-center text-white">
+                <p class="text-[10px] uppercase tracking-widest font-bold opacity-70 mb-2">Research</p>
+                <p class="text-sm opacity-90">Evidence-based studies supporting policy recommendations</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Partnership cards -->
+    <div class="mb-12">
+        <h3 class="text-xl font-bold font-headline text-on-surface mb-6 fade-in-up">Partnership Network</h3>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="card-lift bg-white rounded-xl shadow-sm border border-outline-variant/10 p-6 text-center fade-in-up delay-1">
+                <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-3">
+                    <span class="material-symbols-outlined text-primary">account_balance</span>
+                </div>
+                <div class="text-2xl font-extrabold text-on-surface font-headline counter" data-target="12">0</div>
+                <p class="text-xs text-on-surface-variant mt-1 font-medium">Public Admin</p>
+            </div>
+            <div class="card-lift bg-white rounded-xl shadow-sm border border-outline-variant/10 p-6 text-center fade-in-up delay-2">
+                <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-3">
+                    <span class="material-symbols-outlined text-primary">business</span>
+                </div>
+                <div class="text-2xl font-extrabold text-on-surface font-headline counter" data-target="6">0</div>
+                <p class="text-xs text-on-surface-variant mt-1 font-medium">Private Sector</p>
+            </div>
+            <div class="card-lift bg-white rounded-xl shadow-sm border border-outline-variant/10 p-6 text-center fade-in-up delay-3">
+                <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-3">
+                    <span class="material-symbols-outlined text-primary">public</span>
+                </div>
+                <div class="text-2xl font-extrabold text-on-surface font-headline counter" data-target="8">0</div>
+                <p class="text-xs text-on-surface-variant mt-1 font-medium">Intl Organisations</p>
+            </div>
+            <div class="card-lift bg-white rounded-xl shadow-sm border border-outline-variant/10 p-6 text-center fade-in-up delay-4">
+                <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-3">
+                    <span class="material-symbols-outlined text-primary">volunteer_activism</span>
+                </div>
+                <div class="text-2xl font-extrabold text-on-surface font-headline counter" data-target="24">0</div>
+                <p class="text-xs text-on-surface-variant mt-1 font-medium">NGOs</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PUB + FEANTSA -->
+    <div class="fade-in-up max-w-3xl">
+        <p class="text-sm text-on-surface-variant leading-relaxed">
+            Through the <strong class="text-on-surface">PUB Platform</strong> and membership in <strong class="text-on-surface">FEANTSA</strong> (European Federation of National Organisations Working with the Homeless), we shape homelessness policy from local municipalities to EU institutions, ensuring lived experience informs every strategy.
+        </p>
+    </div>
+</section>
+
+</div><!-- end max-w container -->
+</main>
+
+<!-- Footer -->
+<footer class="bg-teal-950 w-full py-12 px-12 mt-12">
+<div class="flex flex-col md:flex-row justify-between items-center w-full max-w-[1440px] mx-auto border-t border-white/5 pt-12">
+    <div class="mb-8 md:mb-0">
+        <div class="font-headline font-black text-white text-2xl mb-2">Nadácia Dedo</div>
+        <p class="text-slate-400 text-xs tracking-normal">&copy; 2024 Nadácia Dedo. The Living Ledger of Social Impact.</p>
+    </div>
+    <div class="flex gap-8 font-label text-xs tracking-normal text-slate-400">
+        <a class="hover:text-teal-300 transition-all" href="#">Privacy Policy</a>
+        <a class="hover:text-teal-300 transition-all" href="#">Data Ethics</a>
+        <a class="hover:text-teal-300 transition-all" href="#">Annual Report</a>
+        <a class="hover:text-teal-300 transition-all" href="#">Contact</a>
+    </div>
+</div>
+</footer>
+
+</div><!-- end page-container -->
+
+<script>
+// ============================================
+// 1. Counter Animation (IntersectionObserver)
+// ============================================
+const counters = document.querySelectorAll('.counter');
+const counterDuration = 2000;
+
+const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = parseFloat(el.dataset.target);
+            const decimals = parseInt(el.dataset.decimals) || 0;
+            const prefix = el.dataset.prefix || '';
+            const suffix = el.dataset.suffix || '';
+            const useComma = el.dataset.format === 'comma';
+            const startTime = performance.now();
+
+            function update(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / counterDuration, 1);
+                // Cubic ease-out
+                const eased = 1 - Math.pow(1 - progress, 3);
+                let value = eased * target;
+
+                if (decimals > 0) {
+                    value = value.toFixed(decimals);
+                } else {
+                    value = Math.floor(value);
+                    if (useComma) value = value.toLocaleString();
+                }
+
+                el.textContent = prefix + value + suffix;
+
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                }
+            }
+
+            requestAnimationFrame(update);
+            counterObserver.unobserve(el);
+        }
+    });
+}, { threshold: 0.5 });
+
+counters.forEach(c => counterObserver.observe(c));
+
+// ============================================
+// 2. Fade-in Animations (IntersectionObserver)
+// ============================================
+const fadeElements = document.querySelectorAll('.fade-in-left, .fade-in-right, .fade-in-up');
+
+const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            fadeObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1 });
+
+fadeElements.forEach(el => fadeObserver.observe(el));
+
+// ============================================
+// 3. Bar Grow Animation (IntersectionObserver)
+// ============================================
+const bars = document.querySelectorAll('.bar-grow');
+
+const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            barObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.2 });
+
+bars.forEach(b => barObserver.observe(b));
+
+// ============================================
+// 4. Floating Nav Active State (IntersectionObserver)
+// ============================================
+const sections = document.querySelectorAll('.impact-section');
+const navLinks = document.querySelectorAll('.impact-nav-link');
+
+const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + id) {
+                    link.classList.add('active');
+                }
+            });
+        }
+    });
+}, {
+    rootMargin: '-20% 0px -60% 0px',
+    threshold: 0
+});
+
+sections.forEach(s => navObserver.observe(s));
+
+// Smooth scroll on nav click
+navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+});
+
+// ============================================
+// 5. Parallax Scroll Handler
+// ============================================
+const parallaxElements = document.querySelectorAll('.parallax-element');
+
+function updateParallax() {
+    const scrollY = window.scrollY;
+    parallaxElements.forEach(el => {
+        const speed = parseFloat(el.dataset.speed) || 0.1;
+        const rect = el.getBoundingClientRect();
+        const centerY = rect.top + rect.height / 2;
+        const viewCenter = window.innerHeight / 2;
+        const offset = (centerY - viewCenter) * speed;
+        el.style.transform = 'translateY(' + offset + 'px)';
+    });
+}
+
+window.addEventListener('scroll', updateParallax, { passive: true });
+updateParallax();
+
+// ============================================
+// 6. Dot Visualization (Housing gap)
+// ============================================
+function buildDotViz() {
+    const container = document.getElementById('dot-viz');
+    if (!container) return;
+    const housed = 135;
+    const total = 800; // scaled representation
+    const housedDots = Math.round((housed / 2135) * total);
+
+    let html = '';
+    for (let i = 0; i < total; i++) {
+        const cls = i < housedDots ? 'dot-filled' : 'dot-outline';
+        html += '<span class="dot ' + cls + '"></span>';
+    }
+    container.innerHTML = html;
+}
+
+buildDotViz();
+</script>
+</body>
+</html>
